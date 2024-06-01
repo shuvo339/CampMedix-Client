@@ -6,7 +6,9 @@ const Root = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className="max-w-6xl mx-auto px-2 min-h-[calc(100vh-318px)]">
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );

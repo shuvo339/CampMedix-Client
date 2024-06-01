@@ -2,12 +2,14 @@ import {
     createBrowserRouter,
   } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home/Home/Home";
 import Root from "../layouts/Root";
 import Register from './../pages/Register/Register';
 import Login from "../pages/Login/Login";
 import AvailableCamps from './../pages/AvailableCamps/AvailableCamps';
 import JoinUs from './../pages/JoinUs/JoinUs';
+import DashboardLayout from './../layouts/DashboardLayout';
+import AddCamp from './../pages/Dashboard/AddCamp/AddCamp';
 
   export const router = createBrowserRouter([
     {
@@ -35,6 +37,17 @@ import JoinUs from './../pages/JoinUs/JoinUs';
           path: "/join-us",
           element: <JoinUs></JoinUs>,
         },
+    ],
+},
+    {
+      path: "/dashboard",
+      element: <DashboardLayout></DashboardLayout>,
+      children: [
+        {
+          path: "add-camp",
+          element: <AddCamp></AddCamp>,
+        },
+   
     ],
 },
 ]);

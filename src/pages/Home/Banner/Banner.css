@@ -1,0 +1,11 @@
+.carousel .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.carousel .slide img {
+    padding-top: 20px;
+    height: 500px;  /* change this to whatever you want */
+    width: 100%;
+    object-fit: cover;
+}
