@@ -6,6 +6,8 @@ import Home from "../pages/Home/Home";
 import Root from "../layouts/Root";
 import Register from './../pages/Register/Register';
 import Login from "../pages/Login/Login";
+import AvailableCamps from './../pages/AvailableCamps/AvailableCamps';
+import JoinUs from './../pages/JoinUs/JoinUs';
 
   export const router = createBrowserRouter([
     {
@@ -24,6 +26,14 @@ import Login from "../pages/Login/Login";
         {
           path: "/login",
           element: <Login></Login>,
+        },
+        {
+          path: "/available-camps",
+          element: <AvailableCamps></AvailableCamps>,
+        },
+        {
+          path: "/join-us",
+          element: <JoinUs></JoinUs>,
         },
     ],
 },
