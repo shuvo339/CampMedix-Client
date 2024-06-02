@@ -1,8 +1,79 @@
+import Lottie from "lottie-react";
+import animationData from "../../assets/spinner.json";
+import {  useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import CampCard from "../../components/CampCard/CampCard";
 
 const AvailableCamps = () => {
+    const [search, setSearch]=useState('');
+    const [sort, setSort]=useState('');
+    const [colNum, setColNum]=useState(2);
+  
+  console.log(search);
+  const axiosPublic = useAxiosPublic();
+
+  const {data: allCamps = [], isPending: loading} = useQuery({
+    queryKey: ['camps', 'search'], 
+    queryFn: async() =>{
+        console.log(sort);
+        const res = await axiosPublic.get(`/camps`);
+        return res.data;
+    }
+})
+
+    const handleSearch=e=>{
+      e.preventDefault()
+        const text= e.target.search.value;
+        setSearch(text);
+    }
+
+    const handleLayout=e=>{
+        setColNum(parseInt(e.target.value));
+    }
+    const handleSort=e=>{
+        setSort(e.target.value);
+    }
+console.log(sort);
+    if(loading){
+        return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
+    }
+    console.log(colNum);
     return (
-        <div>
-            <h2>camps</h2>
+        <div className="my-10">
+          <div className="flex  gap-4 md:gap-20  justify-around mb-6">
+            {/* sort  */}
+          
+            <select onChange={handleSort} className=" w-72 select select-bordered" name="sort">
+                <option value="sort" disabled selected>Sort</option>
+                <option value="fees">Camp Fees</option>
+                <option value="register">Most Registered</option>
+                <option value="alphabetical">Alphabetical</option>
+            </select>
+     
+            {/* search  */}
+            <form onSubmit={handleSearch}>
+            <div className="mx-auto">
+                <label className="input input-bordered flex items-center gap-2">
+                <input type="text" name="search" className="" placeholder="Search" />
+                <button className="btn btn-sm px-1 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-8 h-8 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg></button>
+                </label>
+            </div>
+            </form>
+
+            {/* layout  */}
+            <select onChange={handleLayout} className="hidden md:block w-72 select select-bordered" name="Layout" id="">
+                <option disabled selected>Layout</option>
+                <option value='2'>2 coulmn</option>
+                <option value='3'>3 coulmn</option>
+            </select>
+          </div>
+
+            <div className={`grid grid-cols-1 md:grid-cols-${colNum} gap-6`}>
+                {
+                     [...allCamps]?.map(camp=><CampCard key={camp._id} camp={camp}></CampCard>)
+                }
+            </div>
         </div>
     );
 };
