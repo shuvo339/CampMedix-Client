@@ -1,5 +1,5 @@
 
-const OrganizerProfile = () => {
+const RegisteredCamps = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const OrganizerProfile = () => {
     );
 };
 
-export default OrganizerProfile;
+export default RegisteredCamps;

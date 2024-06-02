@@ -1,13 +1,10 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
-import { BsFillHouseAddFill, BsGraphUp } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { MdHomeWork } from 'react-icons/md'
 import useAuth from '../../../hooks/useAuth'
 import logo from '../../../assets/logo.svg'
+import OrganizerDashboard from '../Organizer/OrganizerDashboard/OrganizerDashboard'
 
 const Sidebar = () => {
     const { logOut } = useAuth()
@@ -72,58 +69,8 @@ const Sidebar = () => {
   
               {/*  Menu Items */}
               <nav>
-                {/* Statistics */}
-                <NavLink
-                  to='organizer-profile'
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <BsGraphUp className='w-5 h-5' />
-  
-                  <span className='mx-4 font-medium'>Organizer Profile</span>
-                </NavLink>
-  
-                {/* Add Room */}
-                <NavLink
-                  to='add-camp'
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className='w-5 h-5' />
-  
-                  <span className='mx-4 font-medium'>Add A Camp</span>
-                </NavLink>
-                {/* My Listing */}
-                <NavLink
-                  to='manage-camp'
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <MdHomeWork className='w-5 h-5' />
-  
-                  <span className='mx-4 font-medium'>Manage Camps</span>
-                </NavLink>
-                <NavLink
-                  to='manage-registered-camp'
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <MdHomeWork className='w-5 h-5' />
-  
-                  <span className='mx-4 font-medium'>Manage Registerted Camps</span>
-                </NavLink>
+                {/* organizer  */}
+                <OrganizerDashboard></OrganizerDashboard>
               </nav>
             </div>
           </div>

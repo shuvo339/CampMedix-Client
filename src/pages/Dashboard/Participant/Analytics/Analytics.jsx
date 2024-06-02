@@ -1,5 +1,5 @@
 
-const OrganizerProfile = () => {
+const Analytics = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const OrganizerProfile = () => {
     );
 };
 
-export default OrganizerProfile;
+export default Analytics;

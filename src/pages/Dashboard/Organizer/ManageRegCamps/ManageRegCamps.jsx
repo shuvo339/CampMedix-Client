@@ -1,5 +1,5 @@
 
-const OrganizerProfile = () => {
+const ManageRegCamps = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const OrganizerProfile = () => {
     );
 };
 
-export default OrganizerProfile;
+export default ManageRegCamps;
