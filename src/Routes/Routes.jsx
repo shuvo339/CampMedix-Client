@@ -11,6 +11,12 @@ import JoinUs from './../pages/JoinUs/JoinUs';
 import DashboardLayout from './../layouts/DashboardLayout';
 import AddCamp from '../pages/Dashboard/Organizer/AddCamp/AddCamp';
 import CampDetails from './../pages/CampDetails/CampDetails';
+import ManageCamps from './../pages/Dashboard/Organizer/ManageCamps/ManageCamps';
+import ManageRegCamps from './../pages/Dashboard/Organizer/ManageRegCamps/ManageRegCamps';
+import ParticipantProfile from './../pages/Dashboard/Participant/Participant Profile/ParticipantProfile';
+import Analytics from './../pages/Dashboard/Participant/Analytics/Analytics';
+import PaymentHistory from './../pages/Dashboard/Participant/PaymentHistory/PaymentHistory';
+import OrganizerProfile from './../pages/Dashboard/Organizer/OrganizerProfile/OrganizerProfile';
 
   export const router = createBrowserRouter([
     {
@@ -48,15 +54,40 @@ import CampDetails from './../pages/CampDetails/CampDetails';
       path: "/dashboard",
       element: <DashboardLayout></DashboardLayout>,
       children: [
+        //organizer
         {
           path: "organizer-profile",
-          element: <AddCamp></AddCamp>,
+          element: <OrganizerProfile></OrganizerProfile>,
         },
         {
           path: "add-camp",
           element: <AddCamp></AddCamp>,
         },
-   
+        {
+          path: "manage-camp",
+          element: <ManageCamps></ManageCamps>,
+        },
+        {
+          path: "manage-registered-camp",
+          element: <ManageRegCamps></ManageRegCamps>,
+        },
+        //participants
+        {
+          path: "participant-profile",
+          element: <ParticipantProfile></ParticipantProfile>,
+        },
+        {
+          path: "analytics",
+          element: <Analytics></Analytics>,
+        },
+        {
+          path: "registered-camp",
+          element: <Register></Register>,
+        },
+        {
+          path: "payment-history",
+          element: <PaymentHistory></PaymentHistory>,
+        },
     ],
 },
 ]);
