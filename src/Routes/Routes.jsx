@@ -9,7 +9,8 @@ import Login from "../pages/Login/Login";
 import AvailableCamps from './../pages/AvailableCamps/AvailableCamps';
 import JoinUs from './../pages/JoinUs/JoinUs';
 import DashboardLayout from './../layouts/DashboardLayout';
-import AddCamp from './../pages/Dashboard/AddCamp/AddCamp';
+import AddCamp from '../pages/Dashboard/Organizer/AddCamp/AddCamp';
+import CampDetails from './../pages/CampDetails/CampDetails';
 
   export const router = createBrowserRouter([
     {
@@ -37,12 +38,20 @@ import AddCamp from './../pages/Dashboard/AddCamp/AddCamp';
           path: "/join-us",
           element: <JoinUs></JoinUs>,
         },
+        {
+          path: "/details/:id",
+          element: <CampDetails></CampDetails>,
+        },
     ],
 },
     {
       path: "/dashboard",
       element: <DashboardLayout></DashboardLayout>,
       children: [
+        {
+          path: "organizer-profile",
+          element: <AddCamp></AddCamp>,
+        },
         {
           path: "add-camp",
           element: <AddCamp></AddCamp>,

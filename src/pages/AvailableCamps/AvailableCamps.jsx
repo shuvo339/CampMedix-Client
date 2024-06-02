@@ -3,6 +3,7 @@ import animationData from "../../assets/spinner.json";
 import {  useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import CampCard from "../../components/CampCard/CampCard";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AvailableCamps = () => {
     const [search, setSearch]=useState('');
@@ -33,11 +34,10 @@ const AvailableCamps = () => {
     const handleSort=e=>{
         setSort(e.target.value);
     }
-console.log(sort);
     if(loading){
         return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
     }
-    console.log(colNum);
+    
     return (
         <div className="my-10">
           <div className="flex  gap-4 md:gap-20  justify-around mb-6">
