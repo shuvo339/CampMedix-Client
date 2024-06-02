@@ -1,17 +1,25 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const AddCamp = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
       } = useForm()
 
     const onSubmit = (data) => {
-        const {campName, location, photo, date, fees, healthcareName, participant, description} = data;
-        console.log(data)
-      }
+        axios.post('http://localhost:5000/camps', data)
+        .then(data=>{
+            if(data.data.insertedId){
+              toast.success('New camp successfully added')
+            reset();
+            }
+        })
+    }
     return (
          <div className="card w-3/4 mx-auto shadow-2xl bg-base-100 mb-4 mt-6">
             <h2 className="text-2xl md:text-4xl font-semibold text-center">Add A Camp</h2>
@@ -84,16 +92,16 @@ const AddCamp = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text font-bold">Healthcare Name</span>
+            <span className="label-text font-bold">Healthcare Professional Name</span>
           </label>
           <input
             type="text"
-            name="healthcareName"
+            name="professionalName"
             placeholder="Please provide health care name"
             className="input input-bordered"
-            {...register("healthcareName", { required: true })}
+            {...register("professionalName", { required: true })}
           />
-          {errors.healthcareName && <span className="text-red-600">This field is required</span>}
+          {errors.professionalName && <span className="text-red-600">This field is required</span>}
         </div>
         <div className="form-control">
           <label className="label">
