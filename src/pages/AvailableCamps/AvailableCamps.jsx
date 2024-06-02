@@ -2,7 +2,6 @@ import Lottie from "lottie-react";
 import animationData from "../../assets/spinner.json";
 import {  useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import CampCard from "../../components/CampCard/CampCard";
 
 const AvailableCamps = () => {
