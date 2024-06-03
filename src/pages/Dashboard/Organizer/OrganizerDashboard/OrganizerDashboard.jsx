@@ -1,20 +1,22 @@
-
-import { BsFillHouseAddFill, BsGraphUp } from 'react-icons/bs'
+import { FaHouseMedicalCircleExclamation } from "react-icons/fa6";
+import { FaClinicMedical } from "react-icons/fa";
 import { NavLink } from 'react-router-dom'
 import { MdHomeWork } from 'react-icons/md'
+
+import { FaUserCog } from "react-icons/fa";
 const OrganizerDashboard = () => {
     return (
-        <div>
+        <div className="space-y-2">
             {/* Profile  */}
             <NavLink
                   to='organizer-profile'
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
+                      isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
                     }`
                   }
                 >
-                  <BsGraphUp className='w-5 h-5' />
+                  <FaUserCog className='w-5 h-5' />
   
                   <span className='mx-4 font-medium'>Organizer Profile</span>
                 </NavLink>
@@ -23,12 +25,12 @@ const OrganizerDashboard = () => {
                 <NavLink
                   to='add-camp'
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
+                      isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
                     }`
                   }
                 >
-                  <BsFillHouseAddFill className='w-5 h-5' />
+                  <FaClinicMedical className='w-5 h-5' />
   
                   <span className='mx-4 font-medium'>Add A Camp</span>
                 </NavLink>
@@ -36,9 +38,9 @@ const OrganizerDashboard = () => {
                 <NavLink
                   to='manage-camp'
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                    }`
+                  `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
+                    isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
+                  }`
                   }
                 >
                   <MdHomeWork className='w-5 h-5' />
@@ -49,12 +51,12 @@ const OrganizerDashboard = () => {
                 <NavLink
                   to='manage-registered-camp'
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                    }`
+                  `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
+                    isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
+                  }`
                   }
                 >
-                  <MdHomeWork className='w-5 h-5' />
+                  <FaHouseMedicalCircleExclamation className='w-7 h-7' />
   
                   <span className='mx-4 font-medium'>Manage Registerted Camps</span>
                 </NavLink>

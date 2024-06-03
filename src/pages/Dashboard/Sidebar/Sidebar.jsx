@@ -1,15 +1,28 @@
 import { useState } from 'react'
-import { GrLogout } from 'react-icons/gr'
+import { RiLogoutBoxRLine } from "react-icons/ri";
 import { AiOutlineBars } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import logo from '../../../assets/logo.svg'
 import OrganizerDashboard from '../Organizer/OrganizerDashboard/OrganizerDashboard'
+import { IoHome } from "react-icons/io5";
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import ParticipantDashboard from '../Participant/ParticipantDashboard/ParticipantDashboard';
+
 
 const Sidebar = () => {
     const { logOut } = useAuth()
     const [isActive, setActive] = useState(false)
-  
+    const axiosPublic = useAxiosPublic();
+
+    const {data: users = [], isPending: loading} = useQuery({
+      queryKey: ['users'], 
+      queryFn: async() =>{
+          const res = await axiosPublic.get(`/users`);
+          return res.data;
+      }
+  })
     // Sidebar Responsive Handler
     const handleToggle = () => {
       setActive(!isActive)
@@ -17,7 +30,7 @@ const Sidebar = () => {
     return (
       <>
         {/* Small Screen Navbar */}
-        <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
+        <div className='bg-[#DAE0E5] text-slate-700 flex justify-between md:hidden'>
           <div>
             <div className='block cursor-pointer p-4 font-bold'>
               <Link to='/'>
@@ -70,23 +83,40 @@ const Sidebar = () => {
               {/*  Menu Items */}
               <nav>
                 {/* organizer  */}
-                <OrganizerDashboard></OrganizerDashboard>
+                {
+                  users?.role==='organizer' ?   <OrganizerDashboard></OrganizerDashboard> : <ParticipantDashboard></ParticipantDashboard>
+                }
+              
               </nav>
             </div>
           </div>
   
           <div>
             <hr />
+
+
+            <Link to='/'>
+         <button
+              className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 rounded-lg hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+            >
+              <IoHome className='w-5 h-5' />
+  
+              <span className='mx-4 font-medium'>Go Back Home</span>
+            </button>
+         </Link>
+
   
             {/* logout */}
-            <button
+         <Link to='/'>
+         <button
               onClick={logOut}
-              className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+              className='flex w-full items-center px-4 py-2 mt-3 text-gray-600 rounded-lg hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
             >
-              <GrLogout className='w-5 h-5' />
+              <RiLogoutBoxRLine className='w-5 h-5' />
   
               <span className='mx-4 font-medium'>Logout</span>
             </button>
+         </Link>
           </div>
         </div>
         </>
