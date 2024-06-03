@@ -7,17 +7,61 @@ import {
 } from '@headlessui/react'
 import { Fragment } from 'react'
 import useAuth from '../../hooks/useAuth';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
 const JoinCampModal = ({ closeModal, isOpen, camp }) => {
+    const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
+    const navigate = useNavigate()
     const {
+        _id,
         campName,
         location,
-        date,
         fees,
-        description,
         professionalName,
-        participant,
     } = camp;
+ const handleSubmit=e=>{
+    e.preventDefault();
+    const form = e.target;
+    const age = form.age.value;
+    const phone = form.phone.value;
+    const gender = form.gender.value;
+    const emergency = form.emergency.value;
+    const registrationData = {
+        campName,
+        location,
+        fees,
+        professionalName,
+        participantName: user?.displayName,
+        participantEmail: user?.email,
+        age,
+        phone,
+        gender,
+        emergency,
+        status: 'Pending',
+        paymentStatus: 'Unpaid'
+    }
+    axiosPublic.post('/register', registrationData)
+    .then(data=>{
+        if(data.data.insertedId){
+          toast.success('Registration completed successfully')
+          navigate('/dashboard/registered-camp')
+        form.reset();
+        }
+    })
+
+    // axiosPublic.patch(`/participant/${_id}`)
+    // .then(data=>{
+    //     if(data.data.modifiedCout>0){
+    //       navigate('/dashboard/registered-camps')
+    //     }
+    // })
+
+    console.log(registrationData);
+
+ }
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -84,7 +128,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
                                     </p>
                                 </div>
 
-                                <form>
+                                <form onSubmit={handleSubmit}>
                                     <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                                         <div className="form-control">
                                             <label className="label">
@@ -93,6 +137,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
                                             <input
                                                 type="number"
                                                 name="age"
+                                                required
                                                 placeholder="Provide your age"
                                                 className="input input-bordered"
                                             />
@@ -104,6 +149,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
                                             <input
                                                 type="number"
                                                 name="phone"
+                                                required
                                                 placeholder="Provide your phone number"
                                                 className="input input-bordered"
                                             />
@@ -114,6 +160,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
                                             </label>
                                             <input
                                                 type="number"
+                                                required
                                                 name="emergency"
                                                 placeholder="Emergency contact"
                                                 className="input input-bordered"
@@ -128,29 +175,27 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
                                         </div>
                                       
                                     </div>
-                                </form>
+                          
 
 
                                 <hr className='mt-8' />
                                 <div className='flex mt-2 justify-around'>
-                                    <button
-                                        onClick={() => {
-                                            //   handleJoin
-                                            closeModal()
-                                        }}
-                                        type='button'
-                                        className='inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
+                                    <input
+                                       
+                                        type='submit' value="Join"
+                                        className='inline-flex justify-center rounded-md border border-transparent bg-[#2A9D8F] px-6 py-2 text-sm font-medium hover:bg-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
                                     >
-                                        Join
-                                    </button>
+                                      
+                                    </input>
                                     <button
                                         type='button'
-                                        className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
+                                        className='inline-flex justify-center rounded-md border border-transparent bg-red-300 px-4 py-2 text-sm font-medium  hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2A9D8F] focus-visible:ring-offset-2'
                                         onClick={closeModal}
                                     >
                                         Cancel
                                     </button>
                                 </div>
+                                </form>
                             </DialogPanel>
                         </TransitionChild>
                     </div>
