@@ -2,8 +2,8 @@ import { FaHouseMedicalCircleExclamation } from "react-icons/fa6";
 import { FaClinicMedical } from "react-icons/fa";
 import { NavLink } from 'react-router-dom'
 import { MdHomeWork } from 'react-icons/md'
-
 import { FaUserCog } from "react-icons/fa";
+
 const OrganizerDashboard = () => {
     return (
         <div className="space-y-2">

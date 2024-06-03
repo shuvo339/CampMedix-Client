@@ -68,9 +68,10 @@ const AvailableCamps = () => {
             </select>
           </div>
 
-            <div className={`grid grid-cols-1 md:grid-cols-${colNum} gap-6`}>
+            <div className={`grid grid-cols-1 gap-6 ${colNum === 2 && "grid-cols-2"} 
+            ${colNum === 3 && "grid-cols-3"}`}>
                 {
-                     [...allCamps]?.map(camp=><CampCard key={camp._id} camp={camp}></CampCard>)
+                     allCamps?.map(camp=><CampCard key={camp._id} camp={camp}></CampCard>)
                 }
             </div>
         </div>

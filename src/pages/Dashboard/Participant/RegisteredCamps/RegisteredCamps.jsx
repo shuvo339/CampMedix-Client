@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const RegisteredCamps = () => {
     const axiosPublic = useAxiosPublic();
@@ -98,7 +99,7 @@ const RegisteredCamps = () => {
                 <td><button className="btn">Pay</button></td>
                 <td>{camp.status}</td>
                 <td><button onClick={()=>{handleCancel(camp._id)}} className="btn">Cancel</button></td>
-                <td><button className="btn">FeedBack</button></td>
+                <td><Link to="/dashboard/feedback"><button className="btn">FeedBack</button></Link></td>
       
             
               </tr>

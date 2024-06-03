@@ -1,6 +1,9 @@
-import { BsFillHouseAddFill, BsGraphUp } from 'react-icons/bs'
+import { FaChartArea } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 import { MdHomeWork } from 'react-icons/md'
+import { FaUserCog } from "react-icons/fa";
+import { FaFileInvoiceDollar } from "react-icons/fa";
+
 const ParticipantDashboard = () => {
     return (
         <div className='space-y-3'>
@@ -13,7 +16,7 @@ const ParticipantDashboard = () => {
                   }`
                   }
                 >
-                  <BsGraphUp className='w-5 h-5' />
+                  <FaUserCog className='w-5 h-5' />
   
                   <span className='mx-4 font-medium'>Participant Profile</span>
                 </NavLink>
@@ -27,7 +30,7 @@ const ParticipantDashboard = () => {
                     }`
                   }
                 >
-                  <BsFillHouseAddFill className='w-5 h-5' />
+                  <FaChartArea className='w-5 h-5' />
   
                   <span className='mx-4 font-medium'>Analytics</span>
                 </NavLink>
@@ -53,7 +56,7 @@ const ParticipantDashboard = () => {
                     }`
                   }
                 >
-                  <MdHomeWork className='w-5 h-5' />
+                  <FaFileInvoiceDollar className='w-5 h-5' />
   
                   <span className='mx-4 font-medium'>Payment History</span>
                 </NavLink>
