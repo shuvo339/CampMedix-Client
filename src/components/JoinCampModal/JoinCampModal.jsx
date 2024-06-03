@@ -20,6 +20,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         campName,
         location,
         fees,
+        date,
         professionalName,
     } = camp;
  const handleSubmit=e=>{
@@ -38,6 +39,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         participantEmail: user?.email,
         age,
         phone,
+        date,
         gender,
         emergency,
         status: 'Pending',
