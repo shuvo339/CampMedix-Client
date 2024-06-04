@@ -12,7 +12,7 @@ const CampDetails = () => {
     const {data: camp = [], isPending: loading} = useQuery({
       queryKey: ['camp'], 
       queryFn: async() =>{
-          const res = await axiosPublic.get(`/camps/${id}`);
+          const res = await axiosPublic.get(`/camp/${id}`);
           return res.data;
       }
   })

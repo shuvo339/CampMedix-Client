@@ -22,7 +22,9 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         fees,
         date,
         professionalName,
+        email
     } = camp;
+    console.log(camp.email)
  const handleSubmit=e=>{
     e.preventDefault();
     const form = e.target;
@@ -37,6 +39,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         professionalName,
         participantName: user?.displayName,
         participantEmail: user?.email,
+        providerEmail: email,
         age,
         phone,
         date,
@@ -44,6 +47,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         emergency,
         status: 'Pending',
         paymentStatus: 'Unpaid'
+
     }
     axiosPublic.post('/register', registrationData)
     .then(data=>{
