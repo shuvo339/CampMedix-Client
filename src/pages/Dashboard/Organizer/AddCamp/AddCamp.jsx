@@ -1,10 +1,11 @@
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const AddCamp = () => {
   const {user} = useAuth()
+  const axiosPublic = useAxiosPublic();
     const {
         register,
         handleSubmit,
@@ -13,7 +14,7 @@ const AddCamp = () => {
       } = useForm()
       const email = user?.email;
     const onSubmit = (data) => {
-        axios.post('http://localhost:5000/camps', {...data, email})
+        axiosPublic.post('/camps', {...data, email})
         .then(data=>{
             if(data.data.insertedId){
               toast.success('New camp successfully added')

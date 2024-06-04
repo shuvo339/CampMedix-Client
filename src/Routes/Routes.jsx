@@ -20,6 +20,7 @@ import OrganizerProfile from './../pages/Dashboard/Organizer/OrganizerProfile/Or
 import RegisteredCamps from "../pages/Dashboard/Participant/RegisteredCamps/RegisteredCamps";
 import Feedback from './../pages/Dashboard/Participant/Feedback/Feedback';
 import Payment from "../pages/Dashboard/Participant/Payment/Payment";
+import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
 
   export const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ import Payment from "../pages/Dashboard/Participant/Payment/Payment";
         {
           path: "manage-camp",
           element: <ManageCamps></ManageCamps>,
+        },
+        {
+          path: "update/:id",
+          element: <UpdateCamps></UpdateCamps>,
         },
         {
           path: "manage-registered-camp",
