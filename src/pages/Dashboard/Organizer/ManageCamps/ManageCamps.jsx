@@ -23,7 +23,7 @@ const ManageCamps = () => {
     //   delete
     const { mutateAsync } = useMutation({
         mutationFn: async id => {
-          const { data } = await axiosPublic.delete(`/camps/${id}`)
+          const { data } = await axiosPublic.delete(`/camp/${id}`)
           return data
         },
         onSuccess: data => {
