@@ -9,7 +9,7 @@ const ParticipantDashboard = () => {
         <div className='space-y-3'>
          {/* Profile  */}
          <NavLink
-                  to='participant-profile'
+                  to='/dashboard/participant-profile'
                   className={({ isActive }) =>
                   `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
                     isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
@@ -23,7 +23,7 @@ const ParticipantDashboard = () => {
   
                 {/* Analytics */}
                 <NavLink
-                  to='analytics'
+                  to='/dashboard/analytics'
                   className={({ isActive }) =>
                     `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
                       isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
@@ -36,7 +36,7 @@ const ParticipantDashboard = () => {
                 </NavLink>
                 {/* registered camps */}
                 <NavLink
-                  to='registered-camp'
+                  to='/dashboard/registered-camp'
                   className={({ isActive }) =>
                     `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
                       isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
@@ -49,7 +49,7 @@ const ParticipantDashboard = () => {
                 </NavLink>
                 {/* Payment history */}
                 <NavLink
-                  to='payment-histroy'
+                  to='/dashboard/payment-history'
                   className={({ isActive }) =>
                     `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
                       isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'

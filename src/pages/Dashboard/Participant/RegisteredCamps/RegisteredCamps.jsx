@@ -96,10 +96,10 @@ const RegisteredCamps = () => {
                 <td>{camp.professionalName}</td>
                 <td>{camp.date}</td>
                 <td>${camp.fees}</td>
-                <td><button className="btn">Pay</button></td>
+                <td><Link to={`/dashboard/payment/${camp._id}`}><button className="btn">Pay</button></Link></td>
                 <td>{camp.status}</td>
                 <td><button onClick={()=>{handleCancel(camp._id)}} className="btn">Cancel</button></td>
-                <td><Link to="/dashboard/feedback"><button className="btn">FeedBack</button></Link></td>
+                <td><Link to={`/dashboard/feedback/${camp._id}`}><button className="btn">FeedBack</button></Link></td>
       
             
               </tr>

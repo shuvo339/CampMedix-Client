@@ -9,17 +9,20 @@ import { IoHome } from "react-icons/io5";
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import ParticipantDashboard from '../Participant/ParticipantDashboard/ParticipantDashboard';
+import Lottie from "lottie-react";
+import animationData from "../../../assets/spinner.json";
 
 
 const Sidebar = () => {
     const { logOut } = useAuth()
     const [isActive, setActive] = useState(false)
     const axiosPublic = useAxiosPublic();
+    const {user} = useAuth()  
 
-    const {data: users = [], isPending: loading} = useQuery({
-      queryKey: ['users'], 
+    const {data: userinfo = [], isPending: loading} = useQuery({
+      queryKey: ['userinfo'], 
       queryFn: async() =>{
-          const res = await axiosPublic.get(`/users`);
+          const res = await axiosPublic.get(`/user?email=${user?.email}`);
           return res.data;
       }
   })
@@ -27,6 +30,9 @@ const Sidebar = () => {
     const handleToggle = () => {
       setActive(!isActive)
     }
+    if(loading){
+      return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
+  }
     return (
       <>
         {/* Small Screen Navbar */}
@@ -84,7 +90,7 @@ const Sidebar = () => {
               <nav>
                 {/* organizer  */}
                 {
-                  users?.role==='organizer' ?   <OrganizerDashboard></OrganizerDashboard> : <ParticipantDashboard></ParticipantDashboard>
+                  userinfo?.role==='organizer' ?   <OrganizerDashboard></OrganizerDashboard> : <ParticipantDashboard></ParticipantDashboard>
                 }
               
               </nav>
