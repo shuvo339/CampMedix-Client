@@ -19,6 +19,7 @@ import PaymentHistory from './../pages/Dashboard/Participant/PaymentHistory/Paym
 import OrganizerProfile from './../pages/Dashboard/Organizer/OrganizerProfile/OrganizerProfile';
 import RegisteredCamps from "../pages/Dashboard/Participant/RegisteredCamps/RegisteredCamps";
 import Feedback from './../pages/Dashboard/Participant/Feedback/Feedback';
+import Payment from "../pages/Dashboard/Participant/Payment/Payment";
 
   export const router = createBrowserRouter([
     {
@@ -91,8 +92,12 @@ import Feedback from './../pages/Dashboard/Participant/Feedback/Feedback';
           element: <PaymentHistory></PaymentHistory>,
         },
         {
-          path: "feedback",
+          path: "feedback/:id",
           element: <Feedback></Feedback>,
+        },
+        {
+          path: "payment/:id",
+          element: <Payment></Payment>
         },
     ],
 },
