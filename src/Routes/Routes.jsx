@@ -20,9 +20,8 @@ import OrganizerProfile from './../pages/Dashboard/Organizer/OrganizerProfile/Or
 import RegisteredCamps from "../pages/Dashboard/Participant/RegisteredCamps/RegisteredCamps";
 import Feedback from './../pages/Dashboard/Participant/Feedback/Feedback';
 import Payment from "../pages/Dashboard/Participant/Payment/Payment";
-// import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
-import ModifiedCamps from "../pages/Dashboard/Organizer/ManageCamps/ModifiedCamps";
 import PrivateRoute from "./PrivateRoute";
+import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
 
   export const router = createBrowserRouter([
     {
@@ -75,7 +74,7 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
           path: "update/:id",
-          element: <PrivateRoute><ModifiedCamps></ModifiedCamps></PrivateRoute>,
+          element: <PrivateRoute><UpdateCamps></UpdateCamps></PrivateRoute>,
         },
         {
           path: "manage-registered-camp",

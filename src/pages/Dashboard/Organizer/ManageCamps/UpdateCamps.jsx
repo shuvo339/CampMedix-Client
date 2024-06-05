@@ -6,15 +6,16 @@ import DashboardTitles from "../../../../components/DashboardTitles/DashboardTit
 import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const UpdateCamps = () => {
     const {id} = useParams();
     const axiosPublic = useAxiosPublic();
 
-    const {data: camp = [], isPending: loading} = useQuery({
-      queryKey: ['camp'], 
+    const {data: camp, isPending: loading} = useQuery({
+      queryKey: ['camp', id], 
       queryFn: async() =>{
-          const res = await axiosPublic.get(`/campinfo/${id}`);
+          const res = await axiosPublic.get(`/camp/${id}`);
           return res.data;
       }
   })
@@ -23,6 +24,7 @@ const UpdateCamps = () => {
           register,
           handleSubmit,
           formState: { errors },
+          reset
         } = useForm()
       const onSubmit = (data) => {
           axiosPublic.put(`/camp/${id}`, {data})
@@ -33,6 +35,11 @@ const UpdateCamps = () => {
           })
       }
       console.log(camp)
+useEffect(()=>{
+  if(camp){
+    reset(camp)
+  }
+},[reset, camp])
       if(loading){
         return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
     }
@@ -46,7 +53,6 @@ const UpdateCamps = () => {
               <span className="label-text font-bold">Camp Name</span>
             </label>
             <input
-            defaultValue={camp.campName}
               type="text"
               name="campName"
               className="input input-bordered"
@@ -61,7 +67,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="location"
-              defaultValue={camp.location}
               className="input input-bordered"
               {...register("location", { required: true })}
             />
@@ -74,7 +79,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="photo"
-              defaultValue={camp.photo}
               className="input input-bordered"
               {...register("photo", { required: true })}
             />
@@ -87,7 +91,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="date"
-              defaultValue={camp.date}
               className="input input-bordered"
               {...register("date", { required: true })}
             />
@@ -100,7 +103,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="fees"
-              defaultValue={camp.fees}
               className="input input-bordered"
               {...register("fees", { required: true })}
             />
@@ -113,7 +115,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="professionalName"
-              defaultValue={camp.professionalName}
               className="input input-bordered"
               {...register("professionalName", { required: true })}
             />
@@ -126,7 +127,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="participant"
-              defaultValue={camp.participant}
               className="input input-bordered"
               {...register("participant", { required: true })}
             />
@@ -140,7 +140,6 @@ const UpdateCamps = () => {
             <input
               type="text"
               name="description"
-              defaultValue={camp.description}
               className="input input-bordered"
               {...register("description", { required: true })}
             />
