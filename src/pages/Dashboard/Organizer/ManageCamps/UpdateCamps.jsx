@@ -27,7 +27,7 @@ const UpdateCamps = () => {
           reset
         } = useForm()
       const onSubmit = (data) => {
-          axiosPublic.put(`/camp/${id}`, {data})
+          axiosPublic.put(`/camp/${id}`, data)
           .then(res=>{
               if(res.data.modifiedCount>0){
                 toast.success('Camp Updated')
