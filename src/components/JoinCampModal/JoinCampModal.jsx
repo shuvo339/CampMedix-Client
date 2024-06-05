@@ -24,7 +24,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         professionalName,
         email
     } = camp;
-    console.log(camp.email)
+    console.log(camp)
  const handleSubmit=e=>{
     e.preventDefault();
     const form = e.target;
@@ -39,7 +39,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         professionalName,
         participantName: user?.displayName,
         participantEmail: user?.email,
-        providerEmail: email,
+        organizerEmail: email,
         age,
         phone,
         date,

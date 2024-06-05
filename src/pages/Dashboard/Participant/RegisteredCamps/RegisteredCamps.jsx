@@ -96,12 +96,10 @@ const RegisteredCamps = () => {
                 <td>{camp.professionalName}</td>
                 <td>{camp.date}</td>
                 <td>${camp.fees}</td>
-                <td><Link to={`/dashboard/payment/${camp._id}`}><button className="btn">Pay</button></Link></td>
+                <td>{camp?.paymentStatus === 'Paid' ? <button className="btn !bg-green-100 !text-green-600" disabled>Paid</button> :<Link to={`/dashboard/payment/${camp._id}`}><button className="btn">Pay</button></Link>}</td>
                 <td>{camp.status}</td>
-                <td><button onClick={()=>{handleCancel(camp._id)}} className="btn">Cancel</button></td>
-                <td><Link to={`/dashboard/feedback/${camp._id}`}><button className="btn">FeedBack</button></Link></td>
-      
-            
+                <td><button disabled={camp?.paymentStatus === 'Paid'} onClick={()=>{handleCancel(camp._id)}} className="btn">Cancel</button></td>
+                <td>{camp?.paymentStatus === 'Paid' && camp?.status === 'Confirmed' ? <Link to={`/dashboard/feedback/${camp._id}`}><button className="btn">FeedBack</button></Link> : <button className="btn" disabled>Feedback</button>}</td>
               </tr>
             ))}
           </tbody>

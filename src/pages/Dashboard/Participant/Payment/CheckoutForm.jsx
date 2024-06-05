@@ -72,8 +72,11 @@ const CheckoutForm = ({camp, refetch}) => {
         else {
             console.log('payment intent', paymentIntent)
             if (paymentIntent.status === 'succeeded') {
-                console.log('transaction id', paymentIntent.id);
+                // console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
+
+                //change payment status
+                const result = await axiosSecure.patch(`/register/${camp._id}`, {paymentStatus: "Paid"});
 
                 // now save the payment in the database
                 const payment = {
@@ -81,13 +84,14 @@ const CheckoutForm = ({camp, refetch}) => {
                     campName: camp.campName,
                     fees: camp.fees,
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
+                    date: new Date(), 
                     campId: camp._id,
                     status: 'pending'
                 }
 
-                const res = await axiosSecure.post('/payments', payment);
-                console.log('payment saved', res.data);
+                const res = await axiosSecure.post('/payments', payment)
+                
+                // console.log('payment saved', res.data);
                 refetch();
                 if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
