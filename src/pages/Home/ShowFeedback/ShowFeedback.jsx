@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { MdOutlineRateReview } from "react-icons/md";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 
 const ShowFeedback = () => {
@@ -21,10 +22,8 @@ const ShowFeedback = () => {
   })
     return (
         <div className="md:mt-24 mt-12">
-      <h2 className="text-3xl md:text-5xl font-bold">Reviews</h2>
-      <h2 className="text-xl text-gray-400 font-bold">
-        Hear from Our Clients
-      </h2>
+          <SectionTitle title={'Feedback'} subTitle={'Hear from Our Clients'}></SectionTitle>
+     
       <div className=" gap-8">
         {/* show Reviews  */}
         <div className=" p-3">
@@ -34,7 +33,7 @@ const ShowFeedback = () => {
             </p>
             {feedbacks.map((feedback) => (
               <SwiperSlide key={feedback._id}>
-                <div className="flex md:flex-row gap-2 md:gap-16 justify-center flex-col items-center rounded-lg py-12 mx-2 md:mx-10 bg-stone-600 bg-opacity-10 space-y-2 shadow-lg">
+                <div className="flex md:flex-row gap-2 md:gap-32 justify-center flex-col items-center rounded-lg py-12 mx-2 md:mx-6 bg-stone-100 space-y-2 shadow-lg">
                 <div className="space-y-3 text-center max-w-64">
                <div className="opacity-85 text-center pb-6">
                

@@ -6,8 +6,10 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <PopularCamps></PopularCamps>
-            <ShowFeedback></ShowFeedback>
+            <div className="max-w-6xl mx-auto px-2 min-h-[calc(100vh-318px)]">
+                <PopularCamps></PopularCamps>
+                <ShowFeedback></ShowFeedback>
+            </div>
         </div>
     );
 };

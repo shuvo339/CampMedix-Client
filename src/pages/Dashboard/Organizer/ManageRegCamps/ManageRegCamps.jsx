@@ -77,7 +77,7 @@ const ManageRegCamps = () => {
             <DashboardTitles title={'Manage Registered Camps'}></DashboardTitles>
             <div className="mt-8 min-h-60">
       {
-          camps.length < 1 && <h2 className="text-center text-2xl font-semibold my-6  text-red-500 ">You have not added any camp yet!</h2>
+          camps.length < 1 && <h2 className="text-center text-2xl font-semibold my-6  text-red-500 ">There is no camp to be managed!</h2>
       }
       <div className="overflow-x-auto">
         <table className="table table-xs md:table-md lg:table-md overflow-x-auto">

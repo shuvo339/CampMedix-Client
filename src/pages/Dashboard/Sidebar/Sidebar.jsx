@@ -6,33 +6,22 @@ import useAuth from '../../../hooks/useAuth'
 import logo from '../../../assets/logo.svg'
 import OrganizerDashboard from '../Organizer/OrganizerDashboard/OrganizerDashboard'
 import { IoHome } from "react-icons/io5";
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import { useQuery } from '@tanstack/react-query';
 import ParticipantDashboard from '../Participant/ParticipantDashboard/ParticipantDashboard';
-import Lottie from "lottie-react";
-import animationData from "../../../assets/spinner.json";
+import useRoles from '../../../hooks/useRoles';
 
 
 const Sidebar = () => {
-    const { logOut } = useAuth()
+    const { logOut, loading } = useAuth()
     const [isActive, setActive] = useState(false)
-    const axiosPublic = useAxiosPublic();
-    const {user} = useAuth()  
-
-    const {data: userinfo = [], isPending: loading} = useQuery({
-      queryKey: ['userinfo'], 
-      queryFn: async() =>{
-          const res = await axiosPublic.get(`/user?email=${user?.email}`);
-          return res.data;
-      }
-  })
+    const [role, isLoading] = useRoles()
     // Sidebar Responsive Handler
     const handleToggle = () => {
       setActive(!isActive)
     }
-    if(loading){
-      return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
-  }
+    if(loading || isLoading){
+      return '...'
+    }
+
     return (
       <>
         {/* Small Screen Navbar */}
@@ -90,7 +79,7 @@ const Sidebar = () => {
               <nav>
                 {/* organizer  */}
                 {
-                  userinfo?.role==='organizer' ?   <OrganizerDashboard></OrganizerDashboard> : <ParticipantDashboard></ParticipantDashboard>
+                  role==='organizer' ?   <OrganizerDashboard></OrganizerDashboard> : <ParticipantDashboard></ParticipantDashboard>
                 }
               
               </nav>

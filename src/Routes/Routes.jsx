@@ -22,6 +22,8 @@ import Feedback from './../pages/Dashboard/Participant/Feedback/Feedback';
 import Payment from "../pages/Dashboard/Participant/Payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
+import OrganizerRoute from "./OrganizerRoute";
+import ParticipantRoute from "./ParticipantRoute";
 
   export const router = createBrowserRouter([
     {
@@ -62,32 +64,32 @@ import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
         //organizer
         {
           path: "organizer-profile",
-          element: <PrivateRoute><OrganizerProfile></OrganizerProfile></PrivateRoute>,
+          element: <PrivateRoute><OrganizerRoute><OrganizerProfile></OrganizerProfile></OrganizerRoute></PrivateRoute>,
         },
         {
           path: "add-camp",
-          element: <PrivateRoute><AddCamp></AddCamp></PrivateRoute>,
+          element: <PrivateRoute><OrganizerRoute><AddCamp></AddCamp></OrganizerRoute></PrivateRoute>,
         },
         {
           path: "manage-camp",
-          element: <PrivateRoute><ManageCamps></ManageCamps></PrivateRoute>,
+          element: <PrivateRoute><OrganizerRoute><ManageCamps></ManageCamps></OrganizerRoute></PrivateRoute>,
         },
         {
           path: "update/:id",
-          element: <PrivateRoute><UpdateCamps></UpdateCamps></PrivateRoute>,
+          element: <PrivateRoute><OrganizerRoute><UpdateCamps></UpdateCamps></OrganizerRoute></PrivateRoute>,
         },
         {
           path: "manage-registered-camp",
-          element: <PrivateRoute><ManageRegCamps></ManageRegCamps></PrivateRoute>,
+          element: <PrivateRoute><ManageRegCamps><ManageRegCamps></ManageRegCamps></ManageRegCamps></PrivateRoute>,
         },
         //participants
         {
           path: "participant-profile",
-          element: <PrivateRoute><ParticipantProfile></ParticipantProfile></PrivateRoute>,
+          element: <PrivateRoute><ParticipantRoute><ParticipantProfile></ParticipantProfile></ParticipantRoute></PrivateRoute>,
         },
         {
           path: "analytics",
-          element: <PrivateRoute><Analytics></Analytics></PrivateRoute>,
+          element: <PrivateRoute><ParticipantRoute><Analytics></Analytics></ParticipantRoute></PrivateRoute>,
         },
         {
           path: "registered-camp",
@@ -95,15 +97,15 @@ import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
         },
         {
           path: "payment-history",
-          element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>,
+          element: <PrivateRoute><ParticipantRoute><PaymentHistory></PaymentHistory></ParticipantRoute></PrivateRoute>,
         },
         {
           path: "feedback/:id",
-          element: <PrivateRoute><Feedback></Feedback></PrivateRoute>,
+          element: <PrivateRoute><ParticipantProfile><Feedback></Feedback></ParticipantProfile></PrivateRoute>,
         },
         {
           path: "payment/:id",
-          element: <PrivateRoute><Payment></Payment></PrivateRoute>
+          element: <PrivateRoute><ParticipantRoute><Payment></Payment></ParticipantRoute></PrivateRoute>
         },
     ],
 },

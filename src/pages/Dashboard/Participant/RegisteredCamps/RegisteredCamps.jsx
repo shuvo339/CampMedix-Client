@@ -6,6 +6,7 @@ import animationData from "../../../../assets/spinner.json";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 
 const RegisteredCamps = () => {
     const axiosPublic = useAxiosPublic();
@@ -61,13 +62,11 @@ const RegisteredCamps = () => {
     return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
 }
     return (
-        <div className="my-8">
-        <div className="h-20 bg-blue-100 flex justify-center items-center">
-        <h2 className="text-3xl font-semibold">Registered Camps</h2>
-        </div>
+        <div className="my-10">
+        <DashboardTitles title={'Registered Camps'}></DashboardTitles>
         <div className="mt-8 min-h-60">
       {
-          registeredCamps.length < 1 && <h2 className="text-center text-2xl font-semibold my-6  text-red-500 ">You have not booked any service yet!</h2>
+          registeredCamps.length < 1 && <h2 className="text-center text-2xl font-semibold my-6  text-red-500 ">You have not registered any camp yet!</h2>
       }
       <div className="overflow-x-auto">
         <table className="table table-xs md:table-md lg:table-md overflow-x-auto">

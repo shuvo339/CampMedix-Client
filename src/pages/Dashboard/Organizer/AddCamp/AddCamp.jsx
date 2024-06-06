@@ -121,7 +121,7 @@ const AddCamp = () => {
       
         <div className="form-control">
           <label className="label">
-            <span className="label-text font-bold">Descrition</span>
+            <span className="label-text font-bold">Description</span>
           </label>
           <input
             type="text"

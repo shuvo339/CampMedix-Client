@@ -53,17 +53,17 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
     .then(data=>{
         if(data.data.insertedId){
           toast.success('Registration completed successfully')
-          navigate('/dashboard/registered-camp')
+        //   navigate('/dashboard/registered-camp')
         form.reset();
         }
     })
 
-    // axiosPublic.patch(`/participant/${_id}`)
-    // .then(data=>{
-    //     if(data.data.modifiedCout>0){
-    //       navigate('/dashboard/registered-camps')
-    //     }
-    // })
+    axiosPublic.patch(`/participant/${_id}`)
+    .then(data=>{
+        if(data.data.modifiedCout>0){
+          navigate('/dashboard/registered-camps')
+        }
+    })
 
     console.log(registrationData);
 

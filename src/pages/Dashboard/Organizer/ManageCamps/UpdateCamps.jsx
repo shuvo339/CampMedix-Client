@@ -1,21 +1,21 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const UpdateCamps = () => {
     const {id} = useParams();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const {data: camp, isPending: loading} = useQuery({
       queryKey: ['camp', id], 
       queryFn: async() =>{
-          const res = await axiosPublic.get(`/camp/${id}`);
+          const res = await axiosSecure.get(`/camp/${id}`);
           return res.data;
       }
   })
@@ -27,7 +27,7 @@ const UpdateCamps = () => {
           reset
         } = useForm()
       const onSubmit = (data) => {
-          axiosPublic.put(`/camp/${id}`, data)
+          axiosSecure.put(`/camp/update/${id}`, data)
           .then(res=>{
               if(res.data.modifiedCount>0){
                 toast.success('Camp Updated')
@@ -135,7 +135,7 @@ useEffect(()=>{
         
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-bold">Descrition</span>
+              <span className="label-text font-bold">Description</span>
             </label>
             <input
               type="text"

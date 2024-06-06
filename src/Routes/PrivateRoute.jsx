@@ -1,12 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import Lottie from "lottie-react";
+import animationData from "../assets/spinner.json";
 
 const PrivateRoute = ({children}) => {
     const {user, loading} = useAuth();
     const location = useLocation();
 
     if(loading){
-        return <div className="text-center mt-6"><span className="loading loading-spinner text-secondary loading-lg"></span></div>;
+        return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
     }
     if(user){
         return children;

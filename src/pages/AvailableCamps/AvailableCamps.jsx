@@ -39,7 +39,7 @@ const AvailableCamps = () => {
     }
     
     return (
-        <div className="my-10">
+        <div className="my-10 max-w-6xl mx-auto px-2 min-h-[calc(100vh-318px)]">
           <div className="flex  gap-4 md:gap-20  justify-around mb-6">
             {/* sort  */}
           
@@ -68,10 +68,10 @@ const AvailableCamps = () => {
             </select>
           </div>
 
-            <div className={`grid grid-cols-1 gap-6 ${colNum === 2 && "grid-cols-2"} 
-            ${colNum === 3 && "grid-cols-3"}`}>
+            <div className={`grid grid-cols-1 gap-6  ${colNum === 2 && "lg:grid-cols-2"} 
+            ${colNum === 3 && "lg:grid-cols-3"}`}>
                 {
-                     allCamps?.map(camp=><CampCard key={camp._id} camp={camp}></CampCard>)
+                     allCamps?.map(camp=><CampCard key={camp._id} colNum={colNum} camp={camp}></CampCard>)
                 }
             </div>
         </div>

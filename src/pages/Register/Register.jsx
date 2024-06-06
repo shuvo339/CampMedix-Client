@@ -16,7 +16,7 @@ const Register = () => {
         formState: { errors },
       } = useForm()
     
-      const {createUser, profileUpdate} = useAuth();
+      const {createUser, profileUpdate, logOut} = useAuth();
 
       const onSubmit = (data) => {
         const {email, password, name, photo} = data;
@@ -38,9 +38,8 @@ const Register = () => {
             toast.success("User created successfully")
             profileUpdate(name, photo)
             if(result.user){
-              setTimeout(()=>{
-                navigate(location?.state || "/")
-              }, 3000)
+                logOut()
+                navigate(location?.state || "/login")
             }
         })
         .catch(error=>{

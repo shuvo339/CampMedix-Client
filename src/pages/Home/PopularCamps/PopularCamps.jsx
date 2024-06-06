@@ -5,6 +5,7 @@ import animationData from "../../../assets/spinner.json";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import CampCard from "../../../components/CampCard/CampCard";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const PopularCamps = () => {
     const axiosPublic = useAxiosPublic();
 
@@ -19,10 +20,10 @@ const PopularCamps = () => {
         return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
     }
     return (
-        <div className="md:mt-24 mt-12">
-            <h2 className="text-3xl md:text-5xl font-bold">Popular Services</h2>
-            <h2 className="text-xl text-gray-400 font-bold pb-8">Explore Our Most Popular Service</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="md:mt-20 mt-8">
+            <SectionTitle title={'Popular Services'} subTitle={'Explore Our Most Popular Service'}></SectionTitle>
+           
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {
                     popularCamps?.slice(0,6).map(camp=><CampCard key={camp._id} camp={camp}></CampCard>)
                 }

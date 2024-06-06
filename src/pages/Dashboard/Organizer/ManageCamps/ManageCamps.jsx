@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 
 const ManageCamps = () => {
     const axiosPublic = useAxiosPublic();
@@ -64,9 +65,7 @@ const ManageCamps = () => {
 }
     return (
         <div className="my-8">
-        <div className="h-20 bg-blue-100 flex justify-center items-center">
-        <h2 className="text-3xl font-semibold">Manage Camps</h2>
-        </div>
+        <DashboardTitles title={'Manage Camps'}></DashboardTitles>
         <div className="mt-8 min-h-60">
       {
           camps.length < 1 && <h2 className="text-center text-2xl font-semibold my-6  text-red-500 ">You have not added any camp yet!</h2>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CampCard = ({camp}) => {
+const CampCard = ({camp, colNum}) => {
     const {
         _id,
         campName,
@@ -19,27 +19,27 @@ const CampCard = ({camp}) => {
           <img className="h-80 w-full object-cover" src={photo} alt="" />
           </div>
           
-        <div className="border-2 rounded-2xl py-3 px-8 space-y-4 max-w-[550px] mx-auto bg-black bg-opacity-50 absolute bottom-44 text-teal-400 right-[22%]">
-            <h2 className="text-3xl font-semibold text-center">{campName}</h2>
-            <div className="flex justify-between items-center">
-              <h2>Fees: ${fees}</h2>
+        {/* <div className={`border-2 rounded-2xl border-teal-400 py-4 px-3  space-y-4 w-[70%] mx-auto bg-black bg-opacity-60 absolute bottom-72 md:bottom-64 right-[15%] text-teal-400`}> */}
+        <div className={`border-2 rounded-2xl border-teal-400 py-4 px-3  space-y-4 bg-black bg-opacity-60 absolute text-teal-400 bottom-72 ${colNum === 3 && "w-[100%] md:bottom-80 right-0"} w-[70%] md:bottom-64 right-[15%]`}>
+            <h2 className="text-2xl font-semibold text-center">{campName}</h2>
+            <div className="flex flex-col md:flex-row font-semibold justify-between items-center">
               <p className="">
-            {/* <span className="opacity-85">Date & Time: </span> */}
             <span className="">{date}</span>
           </p>
+              <h2>Fees: <span className="text-lg">${fees}</span></h2>
             </div>
         </div>
 
        <div className="absolute bg-black rounded-2xl text-teal-600 font-semibold p-3 bg-opacity-60 right-3 z-10"> <h2 className="text-lg">Participants: <span className="font-bold text-teal-400">{participant}</span></h2></div>
      
-        <div className="space-y-2 flex flex-col px-4">
+        <div className="space-y-1 flex flex-col px-4">
         
-          <p className="opacity-95 grow mt-12">{description}</p>
+          <p className="opacity-95 h-auto grow mt-16 mb-4 indent-8 text-justify">{`${description.slice(0,250)} . . .`}</p>
+           
           <p className="">
             <span className="opacity-85">Location: </span>
-            <span className="">{location}</span>
+            <span className="font-semibold">{location}</span>
           </p>
-           
             <h2>
               <span className="opacity-85">Healthcare Professional:</span>
               <span className=" text-lg font-medium"> {professionalName}</span>

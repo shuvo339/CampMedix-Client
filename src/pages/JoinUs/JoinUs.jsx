@@ -41,9 +41,9 @@ const JoinUs = () => {
   return (
     <div className="my-10">
       <h2 className="text-4xl text-center font-semibold my-4">Be a Health Hero with CampMedix</h2>
-      <p className="opacity-85 text-center max-w-[750px] mx-auto pb-8 px-2">Join us in transforming community healthcare through seamless medical camp coordination. Whether you are an organizer or a participant, you will be part of a dedicated team committed to making a real impact. Experience professional growth, collaborate with passionate individuals, and help us create healthier communities. Join now and be a crucial part of our mission!</p>
+      <p className="opacity-85 text-center max-w-[750px] mx-auto pb-8 px-3">Join us in transforming community healthcare through seamless medical camp coordination. Whether you are an organizer or a participant, you will be part of a dedicated team committed to making a real impact. Experience professional growth, collaborate with passionate individuals, and help us create healthier communities. Join now and be a crucial part of our mission!</p>
       <div className="card shrink-0 w-3/4 md:w-1/2 mx-auto shadow-2xl bg-base-100">
-      <h2 className="text-2xl font-medium  text-center">Please Login Here to Join</h2>
+      <h2 className="text-2xl font-medium  text-center">Please Login</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="card-body space-y-2">
           <div className="form-control">
             <label className="label">
