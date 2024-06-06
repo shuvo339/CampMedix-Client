@@ -20,7 +20,7 @@ const CampCard = ({camp, colNum}) => {
           </div>
           
         {/* <div className={`border-2 rounded-2xl border-teal-400 py-4 px-3  space-y-4 w-[70%] mx-auto bg-black bg-opacity-60 absolute bottom-72 md:bottom-64 right-[15%] text-teal-400`}> */}
-        <div className={`border-2 rounded-2xl border-teal-400 py-4 px-3  space-y-4 bg-black bg-opacity-60 absolute text-teal-400 bottom-72 ${colNum === 3 && "w-[100%] md:bottom-80 right-0"} w-[70%] md:bottom-64 right-[15%]`}>
+        <div className={`border-2 rounded-2xl border-teal-400 py-4 px-3  space-y-4 bg-black bg-opacity-60 absolute text-teal-400 bottom-72 ${colNum === 3 && "w-[100%] md:bottom-80 right-0"} w-[100%] right-0 md:w-[70%] md:bottom-64 md:right-[15%]`}>
             <h2 className="text-2xl font-semibold text-center">{campName}</h2>
             <div className="flex flex-col md:flex-row font-semibold justify-between items-center">
               <p className="">

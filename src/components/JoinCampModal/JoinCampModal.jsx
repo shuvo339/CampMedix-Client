@@ -21,10 +21,14 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         location,
         fees,
         date,
+        participant,
         professionalName,
         email
     } = camp;
-    console.log(camp)
+    const participantValue = parseFloat(participant)+1;
+    console.log('first',participantValue, typeof(participantValue))
+    const participantCount = participantValue.toString();
+    console.log('second',participantCount, typeof(participantCount))
  const handleSubmit=e=>{
     e.preventDefault();
     const form = e.target;
@@ -57,8 +61,8 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         form.reset();
         }
     })
-
-    axiosPublic.patch(`/participant/${_id}`)
+    console.log(participantCount)
+        axiosPublic.patch(`/participant/${_id}`, {participantCount: participantCount})
     .then(data=>{
         if(data.data.modifiedCout>0){
           navigate('/dashboard/registered-camps')
