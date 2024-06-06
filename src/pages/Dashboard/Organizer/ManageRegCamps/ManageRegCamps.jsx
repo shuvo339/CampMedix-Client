@@ -57,8 +57,12 @@ const ManageRegCamps = () => {
   }
 
   const handleStatus=id=>{
-    axiosPublic.patch(`/paymentinfo/${id}`)
-
+    axiosPublic.patch(`/paymentinfo/${id}`, {status: "Confirmed"})
+    .then(data=>{
+      if(data.data.modifiedCount>0){
+        console.log(data.data)
+      }
+    })
 
     axiosPublic.patch(`/register/${id}`, {status: "Confirmed"})
     .then(data=>{

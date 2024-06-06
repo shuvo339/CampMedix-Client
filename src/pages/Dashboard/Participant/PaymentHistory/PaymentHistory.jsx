@@ -24,7 +24,7 @@ const PaymentHistory = () => {
     return (
         <div className="my-10">
             <DashboardTitles title='Payment History'></DashboardTitles>
-            <h2 className="text-xl text-right">Total Payments: {payments.length}</h2>
+            <h2 className="text-xl text-left">Total Payments: {payments.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table table-xs md:table-md lg:table-md overflow-x-auto">
                     {/* head */}

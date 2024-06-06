@@ -17,8 +17,6 @@ const CheckoutForm = ({camp, refetch}) => {
     const navigate = useNavigate();
 
 
-
-
     useEffect(() => {
             axiosSecure.post('/create-payment-intent', { price: camp.fees})
                 .then(res => {
@@ -77,7 +75,7 @@ const CheckoutForm = ({camp, refetch}) => {
 
                 //change payment status
                 const result = await axiosSecure.patch(`/register/${camp._id}`, {paymentStatus: "Paid"});
-
+                
                 // now save the payment in the database
                 const payment = {
                     email: user.email,
@@ -86,7 +84,8 @@ const CheckoutForm = ({camp, refetch}) => {
                     transactionId: paymentIntent.id,
                     date: new Date(), 
                     campId: camp._id,
-                    status: 'pending'
+                    status: 'pending',
+                    registerId: camp._id
                 }
 
                 const res = await axiosSecure.post('/payments', payment)

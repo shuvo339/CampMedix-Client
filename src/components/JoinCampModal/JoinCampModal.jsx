@@ -57,7 +57,7 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
     .then(data=>{
         if(data.data.insertedId){
           toast.success('Registration completed successfully')
-        //   navigate('/dashboard/registered-camp')
+          navigate('/dashboard/registered-camp')
         form.reset();
         }
     })
