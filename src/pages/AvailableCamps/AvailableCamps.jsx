@@ -14,14 +14,13 @@ const AvailableCamps = () => {
   const axiosPublic = useAxiosPublic();
 
   const {data: allCamps = [], isPending: loading} = useQuery({
-    queryKey: ['camps', 'search'], 
+    queryKey: ['camps', search, sort], 
     queryFn: async() =>{
-        console.log(sort);
-        const res = await axiosPublic.get(`/camps`);
+        const res = await axiosPublic.get(`/camps?search=${search}&sort=${sort}`);
         return res.data;
     }
 })
-
+console.log(sort)
     const handleSearch=e=>{
       e.preventDefault()
         const text= e.target.search.value;
@@ -46,8 +45,8 @@ const AvailableCamps = () => {
             <select onChange={handleSort} className=" w-72 select select-bordered" name="sort">
                 <option value="sort" disabled selected>Sort</option>
                 <option value="fees">Camp Fees</option>
-                <option value="register">Most Registered</option>
-                <option value="alphabetical">Alphabetical</option>
+                <option value="participant">Most Registered</option>
+                <option value="campName">Alphabetical</option>
             </select>
      
             {/* search  */}
