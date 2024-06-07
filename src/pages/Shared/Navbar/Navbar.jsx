@@ -86,7 +86,7 @@ const Navbar = () => {
             </label>
           </div>:
           <div className="flex items-center justify-center gap-3">
-              <Link to='/login'><button className="btn bg-emerald-500 border-0 font-semibold"> Login</button></Link>
+              <Link to='/login'><button className="btn bg-[#2A9D8F] border-0 font-semibold"> Login</button></Link>
               
             {/* Theme Changer  */}
             <label className="swap swap-rotate">

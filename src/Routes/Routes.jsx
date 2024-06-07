@@ -101,7 +101,7 @@ import ParticipantRoute from "./ParticipantRoute";
         },
         {
           path: "feedback/:id",
-          element: <PrivateRoute><ParticipantProfile><Feedback></Feedback></ParticipantProfile></PrivateRoute>,
+          element: <PrivateRoute><ParticipantRoute><Feedback></Feedback></ParticipantRoute></PrivateRoute>
         },
         {
           path: "payment/:id",

@@ -10,7 +10,7 @@ const PopularCamps = () => {
     const axiosPublic = useAxiosPublic();
 
     const {data: popularCamps = [], isPending: loading} = useQuery({
-      queryKey: ['popularCamp'], 
+      queryKey: ['popularCamps'], 
       queryFn: async() =>{
           const res = await axiosPublic.get(`/popular-camps`);
           return res.data;

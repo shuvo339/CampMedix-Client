@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 
 const AddCamp = () => {
   const {user} = useAuth()
@@ -13,8 +14,10 @@ const AddCamp = () => {
         formState: { errors },
       } = useForm()
       const email = user?.email;
-    const onSubmit = (data) => {
-        axiosPublic.post('/camps', {...data, email})
+      const onSubmit = (data) => {
+      const fees = parseFloat(data.fees)
+      const participant = parseInt(data.participant)
+        axiosPublic.post('/camps', {...data, fees, participant, email})
         .then(data=>{
             if(data.data.insertedId){
               toast.success('New camp successfully added')
@@ -23,8 +26,8 @@ const AddCamp = () => {
         })
     }
     return (
-         <div className="card w-3/4 mx-auto shadow-2xl bg-base-100 mb-4 mt-6">
-            <h2 className="text-2xl md:text-4xl font-semibold text-center">Add A Camp</h2>
+         <div className="card w-3/4 mx-auto shadow-2xl bg-base-100 my-5">
+            <DashboardTitles title={'Add A Camp'}></DashboardTitles>
       <form onSubmit={handleSubmit(onSubmit)} className="card-body space-y-2">
 
         <div className="form-control">
@@ -123,11 +126,11 @@ const AddCamp = () => {
           <label className="label">
             <span className="label-text font-bold">Description</span>
           </label>
-          <input
+          <textarea
             type="text"
             name="description"
             placeholder="Please provide description"
-            className="input input-bordered"
+            className="textarea textarea-bordered"
             {...register("description", { required: true })}
           />
           {errors.description && <span className="text-red-600">This field is required</span>}

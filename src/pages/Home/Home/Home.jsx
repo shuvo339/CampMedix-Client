@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import Highlights from "../Highlights/Highlights";
 import PopularCamps from "../PopularCamps/PopularCamps";
 import ShowFeedback from "../ShowFeedback/ShowFeedback";
 
@@ -8,6 +9,7 @@ const Home = () => {
             <Banner></Banner>
             <div className="max-w-6xl mx-auto px-2 min-h-[calc(100vh-318px)]">
                 <PopularCamps></PopularCamps>
+                <Highlights></Highlights>
                 <ShowFeedback></ShowFeedback>
             </div>
         </div>

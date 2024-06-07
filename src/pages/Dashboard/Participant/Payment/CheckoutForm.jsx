@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import './CheckoutForm.css'
+import toast from "react-hot-toast";
 
 const CheckoutForm = ({camp, refetch}) => {
     const [error, setError] = useState('');
@@ -20,7 +21,7 @@ const CheckoutForm = ({camp, refetch}) => {
     useEffect(() => {
             axiosSecure.post('/create-payment-intent', { price: camp.fees})
                 .then(res => {
-                    console.log(res.data.clientSecret);
+                  
                     setClientSecret(res.data.clientSecret);
                 })
 
@@ -34,7 +35,6 @@ const CheckoutForm = ({camp, refetch}) => {
         }
 
         const card = elements.getElement(CardElement)
-
         if (card === null) {
             return
         }
@@ -70,7 +70,7 @@ const CheckoutForm = ({camp, refetch}) => {
         else {
             console.log('payment intent', paymentIntent)
             if (paymentIntent.status === 'succeeded') {
-                // console.log('transaction id', paymentIntent.id);
+             
                 setTransactionId(paymentIntent.id);
 
                 //change payment status
@@ -92,15 +92,10 @@ const CheckoutForm = ({camp, refetch}) => {
                 
                 // console.log('payment saved', res.data);
                 refetch();
-                if (res.data?.paymentResult?.insertedId) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Payment Successful",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate('/dashboard/paymentHistory')
+                console.log(res.data);
+                if (res.data?.insertedId) {
+                   toast.success('Successful Payment')
+                    navigate('/dashboard/payment-history')
                 }
 
             }

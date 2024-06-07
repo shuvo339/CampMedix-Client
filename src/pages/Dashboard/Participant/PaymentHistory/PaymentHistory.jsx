@@ -22,9 +22,9 @@ const PaymentHistory = () => {
       }));
 
     return (
-        <div className="my-10">
+        <div className="my-5 shadow-2xl">
             <DashboardTitles title='Payment History'></DashboardTitles>
-            <h2 className="text-xl text-left">Total Payments: {payments.length}</h2>
+            <h2 className="text-xl text-left pl-4">Total Payments: {payments.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table table-xs md:table-md lg:table-md overflow-x-auto">
                     {/* head */}

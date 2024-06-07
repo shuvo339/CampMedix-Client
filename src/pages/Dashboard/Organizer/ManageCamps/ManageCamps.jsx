@@ -64,7 +64,7 @@ const ManageCamps = () => {
     return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
 }
     return (
-        <div className="my-8">
+        <div className="my-5">
         <DashboardTitles title={'Manage Camps'}></DashboardTitles>
         <div className="mt-8 min-h-60">
       {

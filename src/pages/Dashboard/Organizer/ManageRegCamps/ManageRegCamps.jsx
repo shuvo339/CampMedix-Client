@@ -77,7 +77,7 @@ const ManageRegCamps = () => {
 }
 
     return (
-        <div className="my-8">
+        <div className="my-5">
             <DashboardTitles title={'Manage Registered Camps'}></DashboardTitles>
             <div className="mt-8 min-h-60">
       {

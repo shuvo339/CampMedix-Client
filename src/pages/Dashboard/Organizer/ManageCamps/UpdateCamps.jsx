@@ -27,7 +27,9 @@ const UpdateCamps = () => {
           reset
         } = useForm()
       const onSubmit = (data) => {
-          axiosSecure.put(`/camp/update/${id}`, data)
+        const fees = parseFloat(data.fees)
+        const participant = parseInt(data.participant)
+          axiosSecure.put(`/camp/update/${id}`, {...data, fees, participant})
           .then(res=>{
               if(res.data.modifiedCount>0){
                 toast.success('Camp Updated')
@@ -44,7 +46,7 @@ useEffect(()=>{
         return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
     }
       return (
-           <div className="card w-3/4 mx-auto shadow-2xl bg-base-100 mb-4 mt-8">
+           <div className="card w-3/4 mx-auto shadow-2xl bg-base-100 my-5">
               <DashboardTitles title={'Update Camp'}></DashboardTitles>
         <form onSubmit={handleSubmit(onSubmit)} className="card-body space-y-2">
   
@@ -137,10 +139,10 @@ useEffect(()=>{
             <label className="label">
               <span className="label-text font-bold">Description</span>
             </label>
-            <input
+            <textarea
               type="text"
               name="description"
-              className="input input-bordered"
+              className="textarea textarea-bordered"
               {...register("description", { required: true })}
             />
             {errors.description && <span className="text-red-600">This field is required</span>}

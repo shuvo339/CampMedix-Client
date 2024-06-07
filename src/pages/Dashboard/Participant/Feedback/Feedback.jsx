@@ -3,6 +3,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosPublic from './../../../../hooks/useAxiosPublic';
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 
 const Feedback = () => {
   const { user } = useAuth();
@@ -55,7 +56,7 @@ const Feedback = () => {
 
   return (
     <div className="mt-6 shadow-xl w-full md:w-2/3 mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold text-center">Your Feedback</h2>
+      <DashboardTitles title={'Your Feedback'}></DashboardTitles>
 
       {/* write reviews  */}
       <div className="p-4">

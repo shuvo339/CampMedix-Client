@@ -25,10 +25,10 @@ const JoinCampModal = ({ closeModal, isOpen, camp }) => {
         professionalName,
         email
     } = camp;
-    const participantValue = parseFloat(participant)+1;
-    console.log('first',participantValue, typeof(participantValue))
-    const participantCount = participantValue.toString();
-    console.log('second',participantCount, typeof(participantCount))
+
+    const participantCount = participant+1;
+  
+
  const handleSubmit=e=>{
     e.preventDefault();
     const form = e.target;

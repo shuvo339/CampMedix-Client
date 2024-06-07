@@ -62,7 +62,7 @@ const RegisteredCamps = () => {
     return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
 }
     return (
-        <div className="my-10">
+        <div className="my-5 shadow-2xl">
         <DashboardTitles title={'Registered Camps'}></DashboardTitles>
         <div className="mt-8 min-h-60">
       {

@@ -33,11 +33,11 @@ const ShowFeedback = () => {
             </p>
             {feedbacks.map((feedback) => (
               <SwiperSlide key={feedback._id}>
-                <div className="flex md:flex-row gap-2 md:gap-32 justify-center flex-col items-center rounded-lg py-12 mx-2 md:mx-6 bg-stone-100 space-y-2 shadow-lg">
-                <div className="space-y-3 text-center max-w-64">
+                <div className="flex md:flex-row gap-2 md:gap-16 justify-center flex-col items-center rounded-lg py-12 mx-2 md:mx-6 bg-stone-100 space-y-2 shadow-lg">
+                <div className="space-y-3 text-center max-w-80">
                <div className="opacity-85 text-center pb-6">
                
-               <p className=""><MdOutlineRateReview className="text-2xl "/> {feedback.opinion}</p>
+               <p className="max-w-[300px] text-justify"><MdOutlineRateReview className="text-2xl "/> {feedback.opinion}</p>
                </div>
                       <div className="flex justify-center items-center gap-4">
                       <img className="!size-16 border-4 rounded-full !object-contain" src={feedback.userPic} alt="" />
@@ -71,7 +71,7 @@ const ShowFeedback = () => {
                   </div>
                   <div>
                     <p className="text-left md:text-right">
-                      <span className="pr-0 md:pr-3">Quality of Medical Services:</span>
+                      <span className="pr-0 md:pr-3">Medical Services:</span>
                       <progress
                         className="progress progress-info w-56"
                         value={feedback.quality}

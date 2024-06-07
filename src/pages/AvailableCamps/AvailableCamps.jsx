@@ -10,7 +10,7 @@ const AvailableCamps = () => {
     const [sort, setSort]=useState('');
     const [colNum, setColNum]=useState(2);
   
-  console.log(search);
+
   const axiosPublic = useAxiosPublic();
 
   const {data: allCamps = [], isPending: loading} = useQuery({
@@ -20,7 +20,7 @@ const AvailableCamps = () => {
         return res.data;
     }
 })
-console.log(sort)
+
     const handleSearch=e=>{
       e.preventDefault()
         const text= e.target.search.value;
