@@ -22,7 +22,7 @@ const ShowFeedback = () => {
   })
     return (
         <div className="md:mt-24 mt-12">
-          <SectionTitle title={'Feedback'} subTitle={'Hear from Our Clients'}></SectionTitle>
+          <SectionTitle title={'Feedback and Ratings'} subTitle={'What Our Users Say'}></SectionTitle>
      
       <div className=" gap-8">
         {/* show Reviews  */}
