@@ -70,40 +70,40 @@ const ShowFeedback = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="text-left md:text-right">
-                      <span className="pr-0 md:pr-3">Medical Services:</span>
+                    <p className="text-center md:text-right">
+                      <span className="pr-1 md:pr-3">Medical Service's Quality:</span>
                       <progress
                         className="progress progress-info w-56"
                         value={feedback.quality}
                         max="5"
                       ></progress>
                     </p>
-                    <p className="text-left md:text-right">
-                      <span className="pr-3">Staff Professionalism:</span>
+                    <p className="text-center md:text-right">
+                      <span className="pr-1 md:pr-3">Staff Professionalism:</span>
                       <progress
                         className="progress progress-info w-56"
                         value={feedback.professionalism}
                         max="5"
                       ></progress>
                     </p>
-                    <p className="text-left md:text-right">
-                      <span className="pr-0 md:pr-3">Facilities and Resources:</span>
+                    <p className="text-center md:text-right">
+                      <span className="pr-1 md:pr-3">Facilities and Resources:</span>
                       <progress
                         className="progress progress-info w-56"
                         value={feedback.facilities}
                         max="5"
                       ></progress>
                     </p>
-                    <p className="text-left md:text-right">
-                      <span className="pr-0 md:pr-3">Registration Process:</span>
+                    <p className="text-center md:text-right">
+                      <span className="pr-1 md:pr-3">Registration Process:</span>
                       <progress
                         className="progress progress-info w-56"
                         value={feedback.process}
                         max="5"
                       ></progress>
                     </p>
-                    <p className="text-left md:text-right">
-                      <span className="pr-2 md:pr-3">Waiting Time:</span>
+                    <p className="text-center md:text-right">
+                      <span className="pr-1 md:pr-3">Avgerage Waiting Time:</span>
                       <progress
                         className="progress progress-info w-56"
                         value={feedback.wait}

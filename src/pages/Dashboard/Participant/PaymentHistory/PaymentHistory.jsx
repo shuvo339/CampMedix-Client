@@ -45,7 +45,7 @@ const PaymentHistory = () => {
                             <td>${payment.fees}</td>
                             <td>{payment.transactionId}</td>
                             <td>{payment.date}</td>
-                            <td>{payment.status}</td>
+                            <td className={`${payment.status === 'Pending' && "text-pink-400"} ${payment.status === 'Confirmed' && 'text-emerald-800 font-semibold'}`}>{payment.status}</td>
                         </tr>)}
                         
                     </tbody>

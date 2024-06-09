@@ -39,10 +39,10 @@ const AvailableCamps = () => {
     
     return (
         <div className="my-10 max-w-6xl mx-auto px-2 min-h-[calc(100vh-318px)]">
-          <div className="flex  gap-4 md:gap-20  justify-around mb-6">
+          <div className="flex flex-col md:flex-row  gap-4 md:gap-20  justify-around mb-6">
             {/* sort  */}
           
-            <select onChange={handleSort} className=" w-72 select select-bordered" name="sort">
+            <select onChange={handleSort} className="w-full lg:w-72 select select-bordered" name="sort">
                 <option value="sort" disabled selected>Sort</option>
                 <option value="fees">Camp Fees</option>
                 <option value="participant">Most Registered</option>
@@ -60,7 +60,7 @@ const AvailableCamps = () => {
             </form>
 
             {/* layout  */}
-            <select onChange={handleLayout} className="hidden md:block w-72 select select-bordered" name="Layout" id="">
+            <select onChange={handleLayout} className="hidden lg:block w-72 select select-bordered" name="Layout" id="">
                 <option disabled selected>Layout</option>
                 <option value='2'>2 coulmn</option>
                 <option value='3'>3 coulmn</option>

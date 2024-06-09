@@ -13,18 +13,18 @@ const Footer = () => {
             <img className="w-full" src={logo} alt="" />
 
             <p className="text-center opacity-90">
-              Providing reliable services since 2020
+              Providing reliable services since 2022
             </p>
 
             <div className="grid grid-flow-col gap-8 items-center justify-center mt-6">
               <a className="cursor-pointer">
-                <FaLinkedin className="text-3xl text-[#0a66c2]" />
+                <FaLinkedin className="text-2xl text-[#0a66c2]" />
               </a>
               <a className="cursor-pointer">
-                <FaTwitter className="text-3xl text-[#1DA1F2]" />
+                <FaTwitter className="text-2xl text-[#1DA1F2]" />
               </a>
               <a className="cursor-pointer">
-                <FaFacebook className="text-3xl text-[#1877F2]" />
+                <FaFacebook className="text-2xl text-[#1877F2]" />
               </a>
             </div>
           </aside>
@@ -46,7 +46,7 @@ const Footer = () => {
           
           <nav className="flex flex-col  gap-2">
             <div className="flex gap-4 items-center py-2">
-              <FaPhoneSquareAlt className="text-4xl" />
+              <FaPhoneSquareAlt className="text-2xl" />
               <h2>
                 <span className=" text-lg font-semibold">
                   567-858-9533-0339
@@ -54,7 +54,7 @@ const Footer = () => {
               </h2>
             </div>
             <div className="flex gap-4 items-center py-2">
-              <MdEmail className="text-4xl" />
+              <MdEmail className="text-2xl" />
               <h2>
                 <span className=" text-lg font-semibold">
                   support@campmedix.com

@@ -141,8 +141,8 @@ const ManageCamps = () => {
                     <td>{camp.professionalName}</td>
                     <td>{camp.date}</td>
                     <td>${camp.fees}</td>
-                    <td><Link to={`/dashboard/update/${camp._id}`}><button className="btn">Update</button></Link></td>
-                    <td><button onClick={() => { handleDelete(camp._id) }} className="btn">Delete</button></td>
+                    <td><Link to={`/dashboard/update/${camp._id}`}><button className="btn bg-[#d4edda] text-[#155724] border-[#c3e6cb]">Update</button></Link></td>
+                    <td><button onClick={() => { handleDelete(camp._id) }} className="btn bg-[#f8d7da] text-[#721c24] border-[#f5c6cb]">Delete</button></td>
 
                   </tr>
                 ))}

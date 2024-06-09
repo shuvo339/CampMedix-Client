@@ -16,12 +16,12 @@ const Highlights = () => {
                         onChange={(isVisible) => setIsVisible(isVisible)}
                         partialVisibility={true}
                         >
-                         <h2 className="text-teal-500 text-3xl font-bold">
+                         <h2 className="text-teal-500 text-xl md:text-3xl font-bold">
                             <CountUp end={30} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
                             +</h2>
                         </VisibilitySensor>
                     </div>
-                    <p className="text-xl font-bold">Outstanding <br />Engagement <br /> Camps</p>
+                    <p className="text-base md:text-xl font-bold">Outstanding <br />Engagement <br /> Camps</p>
             </div>
 
             <div>
@@ -31,27 +31,27 @@ const Highlights = () => {
                         onChange={(isVisible) => setIsVisible(isVisible)}
                         partialVisibility={true}
                         >
-                         <h2 className="text-teal-500 text-3xl font-bold">
-                            <CountUp end={200} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
+                         <h2 className="text-teal-500 text-xl md:text-3xl font-bold">
+                            <CountUp end={400} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
                             +</h2>
                         </VisibilitySensor>
                     </div>
-                    <p className="text-xl font-bold">Patients <br />Recover <br />& Thrive</p>
+                    <p className="text-base md:text-xl font-bold">Patients <br />Recover <br />& Thrive</p>
             </div>
 
             <div>
                     <div className="flex gap-2 items-center">
-                    <GrAchievement className="text-teal-500 text-2xl" />
+                    <GrAchievement className="text-teal-500 text-xl md:text-2xl" />
                     <VisibilitySensor
                         onChange={(isVisible) => setIsVisible(isVisible)}
                         partialVisibility={true}
                         >
-                         <h2 className="text-teal-500 text-3xl font-bold">
+                         <h2 className="text-teal-500 text-xl md:text-3xl font-bold">
                             <CountUp end={95} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
                             %</h2>
                         </VisibilitySensor>
                     </div>
-                    <p className="text-xl font-bold">Satisfied <br />Patient <br />Rate</p>
+                    <p className="text-base md:text-xl font-bold">Satisfied <br />Patient <br />Rate</p>
             </div>
          
 

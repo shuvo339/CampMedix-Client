@@ -19,7 +19,7 @@ const ManageRegCamps = () => {
   const { data: camps = [], isPending: loading, refetch } = useQuery({
     queryKey: ['camps', search, currentPage, itemsPerPage],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/registers?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
+      const res = await axiosPublic.get(`/registers-organizer?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
       return res.data;
     }
   })
@@ -27,7 +27,7 @@ const ManageRegCamps = () => {
   useEffect(() => {
     const getCount = async () => {
       const { data } = await axiosPublic(
-        `/campscount?email=${user?.email}&search=${search}`
+        `/campscount-organizer?email=${user?.email}&search=${search}`
       )
 
       setCount(data.count)
@@ -158,9 +158,11 @@ const ManageRegCamps = () => {
                     <td>{camp.campName}</td>
                     <td>{camp.professionalName}</td>
                     <td>${camp.fees}</td>
-                    <td>{camp.paymentStatus}</td>
-                    <td><button onClick={() => { handleStatus(camp._id) }} disabled={camp.paymentStatus === 'Unpaid' || camp.status === 'Confirmed'} className="btn">{camp.status}</button></td>
-                    <td><button onClick={() => { handleCancel(camp._id) }} disabled={camp.paymentStatus === 'Paid' && camp.status === 'Confirmed'} className="btn">Cancel</button></td>
+                    <td className={`${camp.paymentStatus === 'Paid' && "text-emerald-700"} ${camp.paymentStatus === 'Unpaid' && 'text-red-400'}`}>{camp.paymentStatus}</td>
+                    
+                    <td><button onClick={() => { handleStatus(camp._id) }} disabled={camp.paymentStatus === 'Unpaid' || camp.status === 'Confirmed'} className={`btn ${camp.status === 'Confirmed' && "!bg-[#d4edda] !text-[#155724] !border-[#c3e6cb]"} ${camp.status === 'Pending' && 'bg-[#fff3cd] text-[#856404] border-[#ffeeba]'}`}>{camp.status}</button></td>
+                    
+                    <td><button onClick={() => { handleCancel(camp._id) }} disabled={camp.paymentStatus === 'Paid' && camp.status === 'Confirmed'} className="btn bg-[#f9e2e3] text-[#842029] border-[#f8d7da]">Cancel</button></td>
 
                   </tr>
                 ))}

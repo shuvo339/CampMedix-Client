@@ -143,9 +143,10 @@ console.log(count)
                 <td>{camp.date}</td>
                 <td>${camp.fees}</td>
                 <td>{camp?.paymentStatus === 'Paid' ? <button className="btn !bg-green-100 !text-green-600" disabled>Paid</button> :<Link to={`/dashboard/payment/${camp._id}`}><button className="btn">Pay</button></Link>}</td>
-                <td>{camp.status}</td>
-                <td><button disabled={camp?.paymentStatus === 'Paid'} onClick={()=>{handleCancel(camp._id)}} className="btn">Cancel</button></td>
-                <td>{camp?.paymentStatus === 'Paid' && camp?.status === 'Confirmed' ? <Link to={`/dashboard/feedback/${camp._id}`}><button className="btn">FeedBack</button></Link> : <button className="btn" disabled>Feedback</button>}</td>
+                <td className={`${camp.status === 'Pending' && "text-pink-400"} ${camp.status === 'Confirmed' && 'text-emerald-800 font-semibold'}`}>{camp.status}</td>
+                
+                <td><button disabled={camp?.paymentStatus === 'Paid'} onClick={()=>{handleCancel(camp._id)}} className="btn bg-[#f9e2e3] text-[#842029] border-[#f8d7da]">Cancel</button></td>
+                <td>{camp?.paymentStatus === 'Paid' && camp?.status === 'Confirmed' ? <Link to={`/dashboard/feedback/${camp._id}`}><button className="btn bg-[#d1ecf1] border-[#bee5eb] text-[#0c5460]">FeedBack</button></Link> : <button className="btn" disabled>Feedback</button>}</td>
               </tr>
             ))}
           </tbody>
