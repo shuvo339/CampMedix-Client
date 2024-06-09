@@ -1,6 +1,6 @@
 import { FaHandshake } from "react-icons/fa";
-import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPeopleRobbery } from "react-icons/fa6";
+import { GrAchievement } from "react-icons/gr";
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 import { useState } from "react";
@@ -8,50 +8,50 @@ import { useState } from "react";
 const Highlights = () => {
     const [isVisible, setIsVisible] = useState(false);
     return (
-        <div style={{backgroundImage: `url("https://i.ibb.co/bLqVZyK/medical-highlights.jpg")`}} className='md:mt-24 mt-12 min-h-72 bg-cover bg-center w-full bg-no-repeat bg-opacity-60 bg-black bg-blend-overlay rounded-lg flex flex-col md:py-0 py-4 space-y-8 md:space-y-0 md:flex-row justify-around items-center'>
+        <div  className='mt-6 flex justify-between items-center'>
             <div>
                     <div className="flex gap-2 items-center">
-                    <FaHandshake className="text-teal-400 text-4xl" />
+                    <FaHandshake className="text-teal-400 text-3xl" />
                         <VisibilitySensor
                         onChange={(isVisible) => setIsVisible(isVisible)}
                         partialVisibility={true}
                         >
-                         <h2 className="text-teal-400 text-5xl font-bold">
-                            <CountUp end={50} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
+                         <h2 className="text-teal-500 text-3xl font-bold">
+                            <CountUp end={30} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
                             +</h2>
                         </VisibilitySensor>
                     </div>
-                    <p className="text-white text-3xl font-bold">Successfull <br />Camp <br /> Organized</p>
+                    <p className="text-xl font-bold">Outstanding <br />Engagement <br /> Camps</p>
             </div>
 
             <div>
                     <div className="flex gap-2 items-center">
-                    <FaPeopleRobbery className="text-teal-400 text-4xl" />
+                    <FaPeopleRobbery className="text-teal-400 text-3xl" />
                     <VisibilitySensor
                         onChange={(isVisible) => setIsVisible(isVisible)}
                         partialVisibility={true}
                         >
-                         <h2 className="text-teal-400 text-5xl font-bold">
+                         <h2 className="text-teal-500 text-3xl font-bold">
                             <CountUp end={200} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
                             +</h2>
                         </VisibilitySensor>
                     </div>
-                    <p className="text-white text-3xl font-bold">Patients <br />Recover <br />and Thrive</p>
+                    <p className="text-xl font-bold">Patients <br />Recover <br />& Thrive</p>
             </div>
 
             <div>
                     <div className="flex gap-2 items-center">
-                    <FaMapLocationDot className="text-teal-400 text-4xl" />
+                    <GrAchievement className="text-teal-500 text-2xl" />
                     <VisibilitySensor
                         onChange={(isVisible) => setIsVisible(isVisible)}
                         partialVisibility={true}
                         >
-                         <h2 className="text-teal-400 text-5xl font-bold">
+                         <h2 className="text-teal-500 text-3xl font-bold">
                             <CountUp end={95} duration={2.5} redraw={true} startOnMount={false} endOnMount={false} start={isVisible} />
                             %</h2>
                         </VisibilitySensor>
                     </div>
-                    <p className="text-white text-3xl font-bold">Patient <br />Satisfaction <br />Rate</p>
+                    <p className="text-xl font-bold">Satisfied <br />Patient <br />Rate</p>
             </div>
          
 
