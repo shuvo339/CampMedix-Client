@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const CampCard = ({camp, colNum}) => {
@@ -13,7 +14,7 @@ const CampCard = ({camp, colNum}) => {
         fees
       } = camp;
       return (
-     
+        <Fade cascade>
         <div className="relative rounded-md flex flex-col  shadow-md space-y-3 border border-opacity-70 border-[#9ACCC9]">
           <div className="border-8 border-opacity-50  border-[#DAE0E5]">
           <img className="h-80 w-full object-cover" src={photo} alt="" />
@@ -48,6 +49,7 @@ const CampCard = ({camp, colNum}) => {
         </div>
          
         </div>
+        </Fade>
     );
 };
 

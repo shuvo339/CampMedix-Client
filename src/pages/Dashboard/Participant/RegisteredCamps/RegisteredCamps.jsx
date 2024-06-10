@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
@@ -10,7 +10,7 @@ import DashboardTitles from "../../../../components/DashboardTitles/DashboardTit
 import { useEffect, useState } from "react";
 
 const RegisteredCamps = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -20,14 +20,14 @@ const RegisteredCamps = () => {
   const { data: registeredCamps = [], isPending: loading, refetch } = useQuery({
     queryKey: ['camps', search, currentPage],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/registers-participant?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
+      const res = await axiosSecure.get(`/registers-participant?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
       return res.data;
     }
   })
 
   useEffect(() => {
     const getCount = async () => {
-      const { data } = await axiosPublic(
+      const { data } = await axiosSecure(
         `/campscount-register?email=${user?.email}&search=${search}`
       )
 
@@ -35,8 +35,8 @@ const RegisteredCamps = () => {
       setCurrentPage(1)
     }
     getCount()
-  }, [search, axiosPublic])
-console.log(count)
+  }, [search, axiosSecure])
+
   const numberOfPages = Math.ceil(count / itemsPerPage)
   const pages = [...Array(numberOfPages).keys()].map(p => p + 1);
 
@@ -62,7 +62,7 @@ console.log(count)
   //   delete
   const { mutateAsync } = useMutation({
     mutationFn: async id => {
-      const { data } = await axiosPublic.delete(`/register/${id}`)
+      const { data } = await axiosSecure.delete(`/register/${id}`)
       return data
     },
     onSuccess: data => {

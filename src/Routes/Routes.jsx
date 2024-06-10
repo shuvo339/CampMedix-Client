@@ -25,6 +25,8 @@ import UpdateCamps from "../pages/Dashboard/Organizer/ManageCamps/UpdateCamps";
 import OrganizerRoute from "./OrganizerRoute";
 import ParticipantRoute from "./ParticipantRoute";
 import DashboardProfile from "../pages/Dashboard/DashboardProfile/DashboardProfile";
+import OrganizerInfo from "../pages/Dashboard/DashboardProfile/OrganizerInfo";
+import ParticipantInfo from "../pages/Dashboard/DashboardProfile/ParticipantInfo";
 
   export const router = createBrowserRouter([
     {
@@ -63,10 +65,14 @@ import DashboardProfile from "../pages/Dashboard/DashboardProfile/DashboardProfi
       element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children: [
         {
-          index: true,
+          path: "/dashboard",
           element: <PrivateRoute><DashboardProfile></DashboardProfile></PrivateRoute>,
         },
         //organizer
+        {
+          path: "organizer-info",
+          element: <PrivateRoute><OrganizerRoute><OrganizerInfo></OrganizerInfo></OrganizerRoute></PrivateRoute>,
+        },
         {
           path: "organizer-profile",
           element: <PrivateRoute><OrganizerRoute><OrganizerProfile></OrganizerProfile></OrganizerRoute></PrivateRoute>,
@@ -87,7 +93,12 @@ import DashboardProfile from "../pages/Dashboard/DashboardProfile/DashboardProfi
           path: "manage-registered-camp",
           element: <PrivateRoute><ManageRegCamps><ManageRegCamps></ManageRegCamps></ManageRegCamps></PrivateRoute>,
         },
+        
         //participants
+        {
+          path: "participant-info",
+          element: <PrivateRoute><ParticipantRoute><ParticipantInfo></ParticipantInfo></ParticipantRoute></PrivateRoute>,
+        },
         {
           path: "participant-profile",
           element: <PrivateRoute><ParticipantRoute><ParticipantProfile></ParticipantProfile></ParticipantRoute></PrivateRoute>,

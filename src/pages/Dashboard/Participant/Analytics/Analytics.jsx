@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import Lottie from "lottie-react";
+import animationData from "../../../../assets/spinner.json";
 import {
     BarChart, Bar, PieChart, Pie, Tooltip, XAxis, YAxis, CartesianGrid, Legend
 } from 'recharts';
@@ -23,7 +25,10 @@ const Analytics = () => {
         ...camp,
         fees: Number(camp.fees)
     }));
-    console.log(data);
+    
+    if(loading){
+        return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
+    }
     return (
         <div className="my-5">
             <DashboardTitles title={'Analytics'}></DashboardTitles>

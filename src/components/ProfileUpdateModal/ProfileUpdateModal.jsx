@@ -9,12 +9,11 @@ import {
 import { Fragment } from 'react'
 
 import toast from 'react-hot-toast';
-import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 
-const ProfileUpdateModal = ({ closeModal, isOpen }) => {
-    const { profileUpdate, user } = useAuth();
-    console.log(user);
+const ProfileUpdateModal = ({ closeModal, isOpen, user, profileUpdate }) => {
+    const navigate = useNavigate();
 const {
     register,
     handleSubmit,
@@ -27,9 +26,10 @@ const onSubmit = (data) => {
     if (photo === '') {
         photo = `${user?.photoURL}`
     }
-    profileUpdate(name, photo)
-        .then(() => {
-            toast.success("Profile updated successfully")
+    profileUpdate(name,photo)
+        .then(()=>{
+          toast.success("Profile updated successfully")
+          navigate('/')
         })
 
 }

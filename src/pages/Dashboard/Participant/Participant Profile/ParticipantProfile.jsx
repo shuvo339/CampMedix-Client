@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import ProfileUpdateModal from "../../../../components/ProfileUpdateModal/ProfileUpdateModal";
 const ParticipantProfile = () => {
-    const { user } = useAuth();
+    const { user, profileUpdate } = useAuth();
     const [isOpen, setIsOpen] = useState(false)
   
   
@@ -25,6 +25,7 @@ const ParticipantProfile = () => {
         <button onClick={() => setIsOpen(true)} className='btn bg-[#2A9D8F] text-white'>Edit Profile</button>
         {/* modal  */}
         <ProfileUpdateModal
+          profileUpdate= {profileUpdate}
           isOpen={isOpen}
           closeModal={closeModal}
           user={user}

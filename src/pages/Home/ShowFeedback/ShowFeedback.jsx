@@ -8,6 +8,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { MdOutlineRateReview } from "react-icons/md";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Zoom } from "react-awesome-reveal";
 
 
 const ShowFeedback = () => {
@@ -21,26 +22,28 @@ const ShowFeedback = () => {
       }
   })
     return (
-        <div className="md:mt-24 mt-12">
+        <div className="md:mt-24 mt-12 mb-10">
           <SectionTitle title={'Feedback and Ratings'} subTitle={'What Our Users Say'}></SectionTitle>
      
-      <div className=" gap-8">
+      <div className="gap-8">
         {/* show Reviews  */}
-        <div className=" p-3">
+        <div className="">
           <Swiper navigation={true} modules={[Navigation]} className="mySwiper relative">
           <p className="text-md font-semibold p-2 rounded-lg absolute top-0 right-10 z-10">
               Total Reviews: {feedbacks.length}
             </p>
             {feedbacks.map((feedback) => (
               <SwiperSlide key={feedback._id}>
-                <div className="flex md:flex-row gap-2 md:gap-16 justify-center flex-col items-center rounded-lg py-12 mx-2 md:mx-6 bg-stone-100 space-y-2 shadow-lg">
-                <div className="space-y-3 text-center max-w-80">
-               <div className="opacity-85 text-center pb-6">
+                <div style={{background: 'linear-gradient(to right, rgba(56, 178, 172, 0.5), rgba(19, 138, 138, 0.2))',}} className="flex md:flex-row gap-2 md:gap-16 min-h-[365px] justify-center flex-col items-center rounded-lg py-12 mx-2 md:mx-6 space-y-2 shadow-lg">
+                <div className="space-y-3 text-center max-w-96">
+               <div className="text-center pb-6">
                
-               <p className="max-w-[300px] text-justify"><MdOutlineRateReview className="text-2xl "/> {feedback.opinion}</p>
+                <Zoom>
+               <p className="max-w-[350px] text-justify"><MdOutlineRateReview className="text-2xl opacity-90"/> {feedback.opinion}</p>
+                </Zoom>
                </div>
                       <div className="flex justify-center items-center gap-4">
-                      <img className="!size-16 border-4 rounded-full !object-contain" src={feedback.userPic} alt="" />
+                      <img className="!size-16 rounded-full ring ring-info ring-offset-green-400 ring-offset-2" src={feedback.userPic} alt="" />
                         <h2 className="font-bold">{feedback.userName}</h2>
                       </div>
                   </div>

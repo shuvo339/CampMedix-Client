@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
@@ -8,9 +7,10 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
 import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const ManageCamps = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [count, setCount] = useState(0);
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,14 +20,14 @@ const ManageCamps = () => {
   const { data: camps = [], isPending: loading, refetch } = useQuery({
     queryKey: ['camps', search, currentPage],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/manage-camps?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
+      const res = await axiosSecure.get(`/manage-camps?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
       return res.data;
     }
   })
 
   useEffect(() => {
     const getCount = async () => {
-      const { data } = await axiosPublic(
+      const { data } = await axiosSecure(
         `/campscount-camps?email=${user?.email}&search=${search}`
       )
 
@@ -35,7 +35,7 @@ const ManageCamps = () => {
       setCurrentPage(1)
     }
     getCount()
-  }, [search, axiosPublic])
+  }, [search, axiosSecure])
 
   const numberOfPages = Math.ceil(count / itemsPerPage)
   const pages = [...Array(numberOfPages).keys()].map(p => p + 1);
@@ -62,7 +62,7 @@ const ManageCamps = () => {
   //   delete
   const { mutateAsync } = useMutation({
     mutationFn: async id => {
-      const { data } = await axiosPublic.delete(`/camp/${id}`)
+      const { data } = await axiosSecure.delete(`/camp/${id}`)
       return data
     },
     onSuccess: data => {

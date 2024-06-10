@@ -3,11 +3,25 @@ import { FaClinicMedical } from "react-icons/fa";
 import { NavLink } from 'react-router-dom'
 import { MdHomeWork } from 'react-icons/md'
 import { FaUserCog } from "react-icons/fa";
+import { MdMedicalInformation } from "react-icons/md";
 
 const OrganizerDashboard = () => {
     return (
         <div className="space-y-2">
             {/* Profile  */}
+            <NavLink
+                  to='organizer-info'
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 transition-colors duration-300 transform rounded-lg scale-105 hover:bg-[#DAE0E5]   hover:text-gray-700 ${
+                      isActive ? 'bg-gray-300  text-gray-700' : 'text-[#264653]'
+                    }`
+                  }
+                >
+                  <MdMedicalInformation className='w-5 h-5' />
+  
+                  <span className='mx-4 font-medium'>Organizer Info</span>
+                </NavLink>
+
             <NavLink
                   to='organizer-profile'
                   className={({ isActive }) =>

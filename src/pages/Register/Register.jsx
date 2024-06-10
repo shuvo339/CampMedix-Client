@@ -38,8 +38,7 @@ const Register = () => {
             toast.success("User created successfully")
             profileUpdate(name, photo)
             if(result.user){
-                logOut()
-                navigate(location?.state || "/login")
+                navigate(location?.state || "/")
             }
         })
         .catch(error=>{

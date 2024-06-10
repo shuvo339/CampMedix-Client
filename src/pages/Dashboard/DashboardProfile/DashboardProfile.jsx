@@ -1,6 +1,8 @@
 import useRoles from "../../../hooks/useRoles";
 import Lottie from "lottie-react";
 import animationData from "../../../assets/spinner.json" 
+import OrganizerInfo from "./OrganizerInfo";
+import ParticipantInfo from "./ParticipantInfo";
 
 const DashboardProfile = () => {
     const [role, isLoading] = useRoles()
@@ -8,12 +10,12 @@ const DashboardProfile = () => {
         return <Lottie className="w-48 mx-auto mt-16" animationData={animationData} />
       }
     return (
-        <div className="text-center mt-20">
+        <div className="text-center mt-2">
             {
-                role==='organizer' && <h2 className="text-3xl font-semibold">Welcome to Organizer Dashboard</h2>
+                role==='organizer' && <OrganizerInfo></OrganizerInfo>
             }
             {
-                role==='participant' && <h2 className="text-3xl font-semibold">Welcome to Participant Dashboard</h2>
+                role==='participant' && <ParticipantInfo></ParticipantInfo>
             }
             
         </div>

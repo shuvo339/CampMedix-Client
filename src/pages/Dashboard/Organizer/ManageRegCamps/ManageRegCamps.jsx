@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import DashboardTitles from "../../../../components/DashboardTitles/DashboardTitles";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from './../../../../hooks/useAuth';
 import Lottie from "lottie-react";
 import animationData from "../../../../assets/spinner.json";
@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 
 const ManageRegCamps = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [count, setCount] = useState(0);
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,14 +19,14 @@ const ManageRegCamps = () => {
   const { data: camps = [], isPending: loading, refetch } = useQuery({
     queryKey: ['camps', search, currentPage, itemsPerPage],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/registers-organizer?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
+      const res = await axiosSecure.get(`/registers-organizer?email=${user?.email}&search=${search}&page=${currentPage}&size=${itemsPerPage}`);
       return res.data;
     }
   })
 
   useEffect(() => {
     const getCount = async () => {
-      const { data } = await axiosPublic(
+      const { data } = await axiosSecure(
         `/campscount-organizer?email=${user?.email}&search=${search}`
       )
 
@@ -34,7 +34,7 @@ const ManageRegCamps = () => {
       setCurrentPage(1)
     }
     getCount()
-  }, [search, axiosPublic])
+  }, [search, axiosSecure])
 
   const numberOfPages = Math.ceil(count / itemsPerPage)
   const pages = [...Array(numberOfPages).keys()].map(p => p + 1);
@@ -62,7 +62,7 @@ const ManageRegCamps = () => {
   //cancel registered camp
   const { mutateAsync } = useMutation({
     mutationFn: async id => {
-      const { data } = await axiosPublic.delete(`/register/${id}`)
+      const { data } = await axiosSecure.delete(`/register/${id}`)
       return data
     },
     onSuccess: data => {
@@ -98,14 +98,14 @@ const ManageRegCamps = () => {
   }
 
   const handleStatus = id => {
-    axiosPublic.patch(`/paymentinfo/${id}`, { status: "Confirmed" })
+    axiosSecure.patch(`/paymentinfo/${id}`, { status: "Confirmed" })
       .then(data => {
         if (data.data.modifiedCount > 0) {
           console.log(data.data)
         }
       })
 
-    axiosPublic.patch(`/register/${id}`, { status: "Confirmed" })
+    axiosSecure.patch(`/register/${id}`, { status: "Confirmed" })
       .then(data => {
         if (data.data.modifiedCount > 0) {
           toast.success('Status hase been updated!')
